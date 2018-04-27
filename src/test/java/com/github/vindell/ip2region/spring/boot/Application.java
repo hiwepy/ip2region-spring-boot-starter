@@ -1,26 +1,19 @@
-# spring-boot-starter-ip2region
-ip2region starter for spring boot
-
-### 说明
-
-
- > 基于 ip2region 的 Spring Boot Starter 实现
-
-1. 最新IP数据下载地址： https://github.com/lionsoul2014/ip2region
-
-### Maven
-
-``` xml
-<dependency>
-	<groupId>com.github.vindell</groupId>
-	<artifactId>spring-boot-starter-ip2region</artifactId>
-	<version>${project.version}</version>
-</dependency>
-```
-
-### Sample
-
-```java
+/*
+ * Copyright (c) 2018, vindell (https://github.com/vindell).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.github.vindell.ip2region.spring.boot;
 
 import java.io.IOException;
 
@@ -51,15 +44,3 @@ public class Application {
 	}
 
 }
-
-```
-
-如果使用外部IP数据，可自定义配置，参考如下：
-```yaml
-ip2region:
-  external: false
-  index-block-size: 4096
-  total-header-size: 8192
-  location: classpath:ip2region/ip2region.db
-```
-
