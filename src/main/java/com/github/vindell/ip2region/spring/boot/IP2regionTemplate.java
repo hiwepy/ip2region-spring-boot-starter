@@ -26,8 +26,8 @@ import com.github.vindell.ip2region.spring.boot.ext.RegionAddress;
 
 public class IP2regionTemplate implements DisposableBean {
 
-    private DbSearcher dbSearcher = null;
-    private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    protected DbSearcher dbSearcher = null;
+    protected ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
  
     public IP2regionTemplate(final DbSearcher dbSearcher) throws IOException {
     	this.dbSearcher = dbSearcher;
