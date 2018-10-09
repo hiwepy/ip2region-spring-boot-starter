@@ -35,8 +35,9 @@ public class IP2regionTemplate implements DisposableBean {
     
     /**
      * get the region with a int ip address with memory binary search algorithm
-     * @param   ip
-     * @throws  IOException
+     * @param   ip ： int ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock memorySearch(long ip) throws IOException {
     	try {
@@ -50,9 +51,9 @@ public class IP2regionTemplate implements DisposableBean {
     /**
      * get the region throught the ip address with memory binary search algorithm
      * 
-     * @param   ip
-     * @return  DataBlock
-     * @throws  IOException 
+     * @param   ip ： string ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock memorySearch( String ip ) throws IOException {
     	try {
@@ -66,8 +67,10 @@ public class IP2regionTemplate implements DisposableBean {
     
     /**
      * get by index ptr
-     * @param   indexPtr
-     * @throws  IOException 
+     * 
+     * @param  ptr ： index ptr
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock getByIndexPtr( long ptr ) throws IOException {
     	try {
@@ -80,9 +83,9 @@ public class IP2regionTemplate implements DisposableBean {
     
     /**
      * get the region with a int ip address with b-tree algorithm
-     * 
-     * @param   ip
-     * @throws  IOException 
+     * @param   ip ： int ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock btreeSearch( long ip ) throws IOException {
     	try {
@@ -95,9 +98,9 @@ public class IP2regionTemplate implements DisposableBean {
     
     /**
      * get the region throught the ip address with b-tree search algorithm
-     * @param   ip
-     * @return  DataBlock
-     * @throws  IOException 
+     * @param   ip ： string ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock btreeSearch( String ip ) throws IOException  {
     	try {
@@ -111,8 +114,9 @@ public class IP2regionTemplate implements DisposableBean {
     /**
      * get the region with a int ip address with binary search algorithm
      * 
-     * @param   ip
-     * @throws  IOException 
+     * @param   ip ： int ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock binarySearch( long ip ) throws IOException {
     	try {
@@ -125,9 +129,9 @@ public class IP2regionTemplate implements DisposableBean {
     
     /**
      * get the region throught the ip address with binary search algorithm
-     * @param   ip
-     * @return  DataBlock
-     * @throws  IOException 
+     * @param   ip ： string ip address
+     * @return {@link DataBlock} instance
+     * @throws  IOException if reader db file error
     */
     public DataBlock binarySearch( String ip ) throws IOException {
     	try {
