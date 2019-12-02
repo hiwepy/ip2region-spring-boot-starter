@@ -1,5 +1,5 @@
-# spring-boot-starter-ip2region
-ip2region starter for spring boot
+# ip2region-spring-boot-starter
+Spring Boot Starter For ip2region
 
 ### 说明
 
@@ -13,7 +13,7 @@ ip2region starter for spring boot
 ``` xml
 <dependency>
 	<groupId>com.github.vindell</groupId>
-	<artifactId>spring-boot-starter-ip2region</artifactId>
+	<artifactId>ip2region-spring-boot-starter</artifactId>
 	<version>${project.version}</version>
 </dependency>
 ```
