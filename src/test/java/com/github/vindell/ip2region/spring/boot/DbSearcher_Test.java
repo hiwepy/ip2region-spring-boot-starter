@@ -1,4 +1,4 @@
-package com.github.vindell.ip2region.spring.boot;
+package com.github.hiwepy.ip2region.spring.boot;
 
 import java.io.IOException;
 

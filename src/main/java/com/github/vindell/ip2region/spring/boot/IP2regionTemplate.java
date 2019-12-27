@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, vindell (https://github.com/vindell).
+ * Copyright (c) 2018, hiwepy (https://github.com/hiwepy).
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.vindell.ip2region.spring.boot;
+package com.github.hiwepy.ip2region.spring.boot;
 
 import java.io.IOException;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -22,7 +22,7 @@ import org.nutz.plugins.ip2region.DataBlock;
 import org.nutz.plugins.ip2region.DbSearcher;
 import org.springframework.beans.factory.DisposableBean;
 
-import com.github.vindell.ip2region.spring.boot.ext.RegionAddress;
+import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
 
 public class IP2regionTemplate implements DisposableBean {
 
