@@ -33,8 +33,10 @@ public class Application {
 	@PostConstruct
 	public void test() throws IOException {
 		
-		System.out.println(template.binarySearch("127.0.0.1"));
-		System.out.println(template.binarySearch("127.0.0.1"));
+	   System.out.println( template.btreeSearch("61.94.43.82"));
+	   System.out.println( template.binarySearch("61.94.43.82"));
+	   System.out.println( template.memorySearch("61.94.43.82"));
+	   System.out.println(template.binarySearch("127.0.0.1"));
 		
 	}
 	

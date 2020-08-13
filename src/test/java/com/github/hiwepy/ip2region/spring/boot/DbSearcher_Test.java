@@ -12,9 +12,11 @@ public class DbSearcher_Test {
 	   
 	   DbSearcher searcher = new DbSearcher();
 	   
-	   System.out.println( searcher.binarySearch("127.0.0.1"));
+	   System.out.println( searcher.btreeSearch("61.94.43.82"));
+	   System.out.println( searcher.binarySearch("61.94.43.82"));
+	   System.out.println( searcher.memorySearch("61.94.43.82"));
 	   
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10; i++) {
 			new Thread() {
 
 				public void run() {
