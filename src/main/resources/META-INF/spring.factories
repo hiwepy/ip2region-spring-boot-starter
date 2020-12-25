@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.hiwepy.ip2region.spring.boot.IP2regionAutoConfiguration
