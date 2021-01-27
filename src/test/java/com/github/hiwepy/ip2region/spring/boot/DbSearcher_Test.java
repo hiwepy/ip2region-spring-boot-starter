@@ -12,24 +12,18 @@ public class DbSearcher_Test {
 	   
 	   DbSearcher searcher = new DbSearcher();
 	   
-	   System.out.println( searcher.btreeSearch("61.94.43.82"));
-	   System.out.println( searcher.binarySearch("61.94.43.82"));
-	   System.out.println( searcher.memorySearch("61.94.43.82"));
+	   System.out.println( searcher.btreeSearch("101.105.35.57"));
+	   System.out.println( searcher.binarySearch("101.105.35.57"));
+	   System.out.println( searcher.memorySearch("101.105.35.57"));
 	   
-		for (int i = 0; i < 10; i++) {
-			new Thread() {
+		for (int i = 1; i < 255; i++) {
 
-				public void run() {
+			try {
+				System.out.println(searcher.binarySearch("115.204.25." + i));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-					try {
-						System.out.println(searcher.binarySearch("127.0.0.1"));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-
-				};
-
-			}.run();
 		}
 
 		
