@@ -21,6 +21,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.nutz.plugins.ip2region.DataBlock;
 import org.nutz.plugins.ip2region.DbSearcher;
 import org.springframework.beans.factory.DisposableBean;
+import org.springframework.util.StringUtils;
 
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
 
@@ -158,6 +159,21 @@ public class IP2regionTemplate implements DisposableBean {
     	} finally {
     		rwl.readLock().unlock();
 		}
+    }
+    
+    public String getCountryByIp(String ip) {
+        if (!StringUtils.hasText(ip)) {
+            return null;
+        }
+        DataBlock dataBlock = null;
+        try {
+            dataBlock = this.binarySearch(ip);
+            String region = dataBlock.getRegion();
+            return region.substring(0, region.indexOf("|"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 	@Override
