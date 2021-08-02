@@ -14,7 +14,7 @@ Spring Boot Starter For ip2region
 <dependency>
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>ip2region-spring-boot-starter</artifactId>
-	<version>${project.version}</version>
+	<version>1.0.5.RELEASE</version>
 </dependency>
 ```
 
@@ -30,7 +30,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableIP2region
 @SpringBootApplication
 public class Application {
 	
