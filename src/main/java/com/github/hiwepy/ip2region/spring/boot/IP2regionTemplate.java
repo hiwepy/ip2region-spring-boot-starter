@@ -21,164 +21,163 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.nutz.plugins.ip2region.DataBlock;
 import org.nutz.plugins.ip2region.DbSearcher;
 import org.springframework.beans.factory.DisposableBean;
-import org.springframework.util.StringUtils;
 
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
 
 public class IP2regionTemplate implements DisposableBean {
 
-    protected DbSearcher dbSearcher = null;
-    protected ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
- 
-    public IP2regionTemplate(final DbSearcher dbSearcher) throws IOException {
-    	this.dbSearcher = dbSearcher;
-    }
-    
-    /**
-     * get the region with a int ip address with memory binary search algorithm
-     * @param   ip ： int ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock memorySearch(long ip) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.memorySearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	protected DbSearcher dbSearcher = null;
+	protected ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+
+	public IP2regionTemplate(final DbSearcher dbSearcher) throws IOException {
+		this.dbSearcher = dbSearcher;
+	}
+
+	/**
+	 * get the region with a int ip address with memory binary search algorithm
+	 * 
+	 * @param ip ： int ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock memorySearch(long ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.memorySearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    /**
-     * get the region throught the ip address with memory binary search algorithm
-     * 
-     * @param   ip ： string ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock memorySearch( String ip ) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.memorySearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get the region throught the ip address with memory binary search algorithm
+	 * 
+	 * @param ip ： string ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock memorySearch(String ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.memorySearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    
-    /**
-     * get by index ptr
-     * 
-     * @param  ptr ： index ptr
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock getByIndexPtr( long ptr ) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.getByIndexPtr(ptr);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get by index ptr
+	 * 
+	 * @param ptr ： index ptr
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock getByIndexPtr(long ptr) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.getByIndexPtr(ptr);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    /**
-     * get the region with a int ip address with b-tree algorithm
-     * @param   ip ： int ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock btreeSearch( long ip ) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.btreeSearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get the region with a int ip address with b-tree algorithm
+	 * 
+	 * @param ip ： int ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock btreeSearch(long ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.btreeSearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    /**
-     * get the region throught the ip address with b-tree search algorithm
-     * @param   ip ： string ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock btreeSearch( String ip ) throws IOException  {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.btreeSearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get the region throught the ip address with b-tree search algorithm
+	 * 
+	 * @param ip ： string ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock btreeSearch(String ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.btreeSearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    /**
-     * get the region with a int ip address with binary search algorithm
-     * 
-     * @param   ip ： int ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock binarySearch( long ip ) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.binarySearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get the region with a int ip address with binary search algorithm
+	 * 
+	 * @param ip ： int ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock binarySearch(long ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.binarySearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    /**
-     * get the region throught the ip address with binary search algorithm
-     * @param   ip ： string ip address
-     * @return {@link DataBlock} instance
-     * @throws  IOException if reader db file error
-    */
-    public DataBlock binarySearch( String ip ) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.binarySearch(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	/**
+	 * get the region throught the ip address with binary search algorithm
+	 * 
+	 * @param ip ： string ip address
+	 * @return {@link DataBlock} instance
+	 * @throws IOException if reader db file error
+	 */
+	public DataBlock binarySearch(String ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.binarySearch(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    public String getRegion(String ip) {
-    	try {
-    		rwl.readLock().lock();
-    		return dbSearcher.getRegion(ip);
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	public String getRegion(String ip) {
+		try {
+			rwl.readLock().lock();
+			return dbSearcher.getRegion(ip);
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    public RegionAddress getRegionAddress(String ip) throws IOException {
-    	try {
-    		rwl.readLock().lock();
-    		return new RegionAddress(dbSearcher.memorySearch(ip).getRegion().split("\\|"));
-    	} finally {
-    		rwl.readLock().unlock();
+	}
+
+	public RegionAddress getRegionAddress(String ip) throws IOException {
+		try {
+			rwl.readLock().lock();
+			return new RegionAddress(dbSearcher.memorySearch(ip).getRegion().split("\\|"));
+		} finally {
+			rwl.readLock().unlock();
 		}
-    }
-    
-    public String getCountryByIp(String ip) {
-        if (!StringUtils.hasText(ip)) {
-            return null;
-        }
-        DataBlock dataBlock = null;
-        try {
-            dataBlock = this.binarySearch(ip);
-            String region = dataBlock.getRegion();
-            return region.substring(0, region.indexOf("|"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	}
+	
+	public String getCountryByIp(String ip) {
+		try {
+			rwl.readLock().lock();
+			String region = dbSearcher.memorySearch(ip).getRegion();
+			return region.substring(0, region.indexOf("|"));
+		} catch (IOException e) {
+			return "未知国家地区";
+		} finally {
+			rwl.readLock().unlock();
+		}
+	}
 
 	@Override
 	public void destroy() throws Exception {
 		dbSearcher.close();
 	}
-    
+
 }

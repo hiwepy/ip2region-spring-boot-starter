@@ -8,6 +8,9 @@ import java.util.Date;
 import org.junit.Test;
 import org.nutz.plugins.ip2region.DbSearcher;
 
+import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
+import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
+
 public class IP2regionTemplate_Test {
 	
 	private static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");		
@@ -19,6 +22,17 @@ public class IP2regionTemplate_Test {
 
 		IP2regionTemplate template = new IP2regionTemplate(searcher);
 
+		System.out.println(template.getRegion("114.44.227.87"));
+		
+		RegionAddress adress1 = template.getRegionAddress("114.44.227.87");
+		System.out.println(adress1);
+		System.out.println(RegionEnum.getByRegionAddress(adress1));
+		
+		RegionAddress adress2 = template.getRegionAddress("127.0.0.1");
+		System.out.println(adress2);
+		System.out.println(RegionEnum.getByRegionAddress(adress2));
+		
+		System.out.println(template.binarySearch("127.0.0.1"));
 		
 		for (int i = 0; i < 1000; i++) {
 			try {
@@ -27,8 +41,9 @@ public class IP2regionTemplate_Test {
 				e.printStackTrace();
 			}
 		}
-		
 		/*
+
+		
 		for (int i = 0; i < 1000; i++) {
 			new Thread() {
 
