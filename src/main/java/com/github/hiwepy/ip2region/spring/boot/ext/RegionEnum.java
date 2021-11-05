@@ -46,11 +46,11 @@ public enum RegionEnum {
 	BE("056", "BE", "BEL", "ISO 3166-2:BE", "Belgium", "比利时"),
 	BF("854", "BF", "BFA", "ISO 3166-2:BF", "Burkina", "布基纳法索"),
 	BG("100", "BG", "BGR", "ISO 3166-2:BG", "Bulgaria", "保加利亚"),
-	BH("048", "BH", "BHR", "ISO 3166-2:BH", "Bahrain", "巴林"), 
+	BH("048", "BH", "BHR", "ISO 3166-2:BH", "Bahrain", "巴林"),
 	BI("108", "BI", "BDI", "ISO 3166-2:BI", "Burundi", "布隆迪"),
 	BJ("204", "BJ", "BEN", "ISO 3166-2:BJ", "Benin", "贝宁"),
 	BL("652", "BL", "BLM", "ISO 3166-2:BL", "Saint Barthélemy", "圣巴泰勒米"),
-	BM("060", "BM", "BMU", "ISO 3166-2:BM", "Bermuda", "百慕大"), 
+	BM("060", "BM", "BMU", "ISO 3166-2:BM", "Bermuda", "百慕大"),
 	BN("096", "BN", "BRN", "ISO 3166-2:BN", "Brunei", "文莱"),
 	BO("068", "BO", "BOL", "ISO 3166-2:BO", "Bolivia", "玻利维亚"),
 	BQ("535", "BQ", "BES", "ISO 3166-2:BQ", "Caribbean Netherlands", "荷兰加勒比区"),
@@ -60,7 +60,7 @@ public enum RegionEnum {
 	BV("074", "BV", "BVT", "ISO 3166-2:BV", "Bouvet Island", "布韦岛"),
 	BW("072", "BW", "BWA", "ISO 3166-2:BW", "Botswana", "博茨瓦纳"),
 	BY("112", "BY", "BLR", "ISO 3166-2:BY", "Belarus", "白俄罗斯"),
-	BZ("084", "BZ", "BLZ", "ISO 3166-2:BZ", "Belize", "伯利兹"), 
+	BZ("084", "BZ", "BLZ", "ISO 3166-2:BZ", "Belize", "伯利兹"),
 	CA("124", "CA", "CAN", "ISO 3166-2:CA", "Canada", "加拿大"),
 	CC("166", "CC", "CCK", "ISO 3166-2:CC", "Cocos (Keeling) Islands", "科科斯群岛"),
 	CD("180", "CD", "COD", "ISO 3166-2:CD", "Democratic Republic of the Congo", "刚果金"),
@@ -69,12 +69,12 @@ public enum RegionEnum {
 	CH("756", "CH", "CHE", "ISO 3166-2:CH", "Switzerland", "瑞士"),
 	CI("384", "CI", "CIV", "ISO 3166-2:CI", "C?te d'Ivoire", "科特迪瓦"),
 	CK("184", "CK", "COK", "ISO 3166-2:CK", "Cook Islands", "库克群岛"),
-	CL("152", "CL", "CHL", "ISO 3166-2:CL", "Chile", "智利"), 
+	CL("152", "CL", "CHL", "ISO 3166-2:CL", "Chile", "智利"),
 	CM("120", "CM", "CMR", "ISO 3166-2:CM", "Cameroon", "喀麦隆"),
-	CN("156", "CN", "CHN", "ISO 3166-2:CN", "China", "中国"), 
+	CN("156", "CN", "CHN", "ISO 3166-2:CN", "China", "中国"),
 	CO("170", "CO", "COL", "ISO 3166-2:CO", "Colombia", "哥伦比亚"),
 	CR("188", "CR", "CRI", "ISO 3166-2:CR", "Costa Rica", "哥斯达黎加"),
-	CU("192", "CU", "CUB", "ISO 3166-2:CU", "Cuba", "古巴"), 
+	CU("192", "CU", "CUB", "ISO 3166-2:CU", "Cuba", "古巴"),
 	CV("132", "CV", "CPV", "ISO 3166-2:CV", "Cape Verde", "佛得角"),
 	CX("162", "CX", "CXR", "ISO 3166-2:CX", "Christmas Island", "圣诞岛"),
 	CY("196", "CY", "CYP", "ISO 3166-2:CY", "Cyprus", "塞浦路斯"),
@@ -86,56 +86,56 @@ public enum RegionEnum {
 	DO("214", "DO", "DOM", "ISO 3166-2:DO", "Dominican Republic", "多米尼加"),
 	DZ("012", "DZ", "DZA", "ISO 3166-2:DZ", "Algeria", "阿尔及利亚"),
 	EC("218", "EC", "ECU", "ISO 3166-2:EC", "Ecuador", "厄瓜多尔"),
-	EE("233", "EE", "EST", "ISO 3166-2:EE", "Estonia", "爱沙尼亚"), 
+	EE("233", "EE", "EST", "ISO 3166-2:EE", "Estonia", "爱沙尼亚"),
 	EG("818", "EG", "EGY", "ISO 3166-2:EG", "Egypt", "埃及"),
 	EH("732", "EH", "ESH", "ISO 3166-2:EH", "Western Sahara", "西撒哈拉"), // no ip
 	ER("232", "ER", "ERI", "ISO 3166-2:ER", "Eritrea", "厄立特里亚"),
 	ES("724", "ES", "ESP", "ISO 3166-2:ES", "Spain", "西班牙"),
 	ET("231", "ET", "ETH", "ISO 3166-2:ET", "Ethiopia", "埃塞俄比亚"),
-	FI("246", "FI", "FIN", "ISO 3166-2:FI", "Finland", "芬兰"), 
+	FI("246", "FI", "FIN", "ISO 3166-2:FI", "Finland", "芬兰"),
 	FJ("242", "FJ", "FJI", "ISO 3166-2:FJ", "Fiji", "斐济"),
 	FK("238", "FK", "FLK", "ISO 3166-2:FK", "Falkland Islands", "马尔维纳斯群岛（ 福克兰）"), // no ip
 	FM("583", "FM", "FSM", "ISO 3166-2:FM", "Federated States of Micronesia", "密克罗尼西亚"),
 	FO("234", "FO", "FRO", "ISO 3166-2:FO", "Faroe Islands", "法罗群岛"),
-	FR("250", "FR", "FRA", "ISO 3166-2:FR", "France", "法国"), 
+	FR("250", "FR", "FRA", "ISO 3166-2:FR", "France", "法国"),
 	GA("266", "GA", "GAB", "ISO 3166-2:GA", "Gabon", "加蓬"),
 	GB("826", "GB", "GBR", "ISO 3166-2:GB", "Great Britain (United Kingdom; England)", "英国"),
 	GD("308", "GD", "GRD", "ISO 3166-2:GD", "Grenada", "格林纳达"),
 	GE("268", "GE", "GEO", "ISO 3166-2:GE", "Georgia", "格鲁吉亚"),
 	GF("254", "GF", "GUF", "ISO 3166-2:GF", "French Guiana", "法属圭亚那"),
-	GG("831", "GG", "GGY", "ISO 3166-2:GG", "Guernsey", "根西岛"), 
+	GG("831", "GG", "GGY", "ISO 3166-2:GG", "Guernsey", "根西岛"),
 	GH("288", "GH", "GHA", "ISO 3166-2:GH", "Ghana", "加纳"),
 	GI("292", "GI", "GIB", "ISO 3166-2:GI", "Gibraltar", "直布罗陀"),
 	GL("304", "GL", "GRL", "ISO 3166-2:GL", "Greenland", "格陵兰"),
-	GM("270", "GM", "GMB", "ISO 3166-2:GM", "Gambia", "冈比亚"), 
+	GM("270", "GM", "GMB", "ISO 3166-2:GM", "Gambia", "冈比亚"),
 	GN("324", "GN", "GIN", "ISO 3166-2:GN", "Guinea", "几内亚"),
 	GP("312", "GP", "GLP", "ISO 3166-2:GP", "Guadeloupe", "瓜德罗普"),
 	GQ("226", "GQ", "GNQ", "ISO 3166-2:GQ", "Equatorial Guinea", "赤道几内亚"),
 	GR("300", "GR", "GRC", "ISO 3166-2:GR", "Greece", "希腊"),
 	GS("239", "GS", "SGS", "ISO 3166-2:GS", "South Georgia and the South Sandwich Islands", "南乔治亚岛和南桑威奇群岛"),
-	GT("320", "GT", "GTM", "ISO 3166-2:GT", "Guatemala", "危地马拉"), 
+	GT("320", "GT", "GTM", "ISO 3166-2:GT", "Guatemala", "危地马拉"),
 	GU("316", "GU", "GUM", "ISO 3166-2:GU", "Guam", "关岛"),
 	GW("624", "GW", "GNB", "ISO 3166-2:GW", "Guinea-Bissau", "几内亚比绍"),
 	GY("328", "GY", "GUY", "ISO 3166-2:GY", "Guyana", "圭亚那"),
 	HK("344", "HK", "HKG", "ISO 3166-2:HK", "Hong Kong", "中国香港"), // country + city
 	HM("334", "HM", "HMD", "ISO 3166-2:HM", "Heard Island and McDonald Islands", "赫德岛和麦克唐纳群岛"), // no ip
 	HN("340", "HN", "HND", "ISO 3166-2:HN", "Honduras", "洪都拉斯"),
-	HR("191", "HR", "HRV", "ISO 3166-2:HR", "Croatia", "克罗地亚"), 
+	HR("191", "HR", "HRV", "ISO 3166-2:HR", "Croatia", "克罗地亚"),
 	HT("332", "HT", "HTI", "ISO 3166-2:HT", "Haiti", "海地"),
 	HU("348", "HU", "HUN", "ISO 3166-2:HU", "Hungary", "匈牙利"),
 	ID("360", "ID", "IDN", "ISO 3166-2:ID", "Indonesia", "印度尼西亚"),
-	IE("372", "IE", "IRL", "ISO 3166-2:IE", "Ireland", "爱尔兰"), 
+	IE("372", "IE", "IRL", "ISO 3166-2:IE", "Ireland", "爱尔兰"),
 	IL("376", "IL", "ISR", "ISO 3166-2:IL", "Israel", "以色列"),
 	IM("833", "IM", "IMN", "ISO 3166-2:IM", "Isle of Man", "马恩岛"),
 	IN("356", "IN", "IND", "ISO 3166-2:IN", "India", "印度"),
 	IO("086", "IO", "IOT", "ISO 3166-2:IO", "British Indian Ocean Territory", "英属印度洋领地"),
-	IQ("368", "IQ", "IRQ", "ISO 3166-2:IQ", "Iraq", "伊拉克"), 
+	IQ("368", "IQ", "IRQ", "ISO 3166-2:IQ", "Iraq", "伊拉克"),
 	IR("364", "IR", "IRN", "ISO 3166-2:IR", "Iran", "伊朗"),
-	IS("352", "IS", "ISL", "ISO 3166-2:IS", "Iceland", "冰岛"), 
+	IS("352", "IS", "ISL", "ISO 3166-2:IS", "Iceland", "冰岛"),
 	IT("380", "IT", "ITA", "ISO 3166-2:IT", "Italy", "意大利"),
-	JE("832", "JE", "JEY", "ISO 3166-2:JE", "Jersey", "泽西岛"), 
+	JE("832", "JE", "JEY", "ISO 3166-2:JE", "Jersey", "泽西岛"),
 	JM("388", "JM", "JAM", "ISO 3166-2:JM", "Jamaica", "牙买加"),
-	JO("400", "JO", "JOR", "ISO 3166-2:JO", "Jordan", "约旦"), 
+	JO("400", "JO", "JOR", "ISO 3166-2:JO", "Jordan", "约旦"),
 	JP("392", "JP", "JPN", "ISO 3166-2:JP", "Japan", "日本"),
 	KE("404", "KE", "KEN", "ISO 3166-2:KE", "Kenya", "肯尼亚"),
 	KG("417", "KG", "KGZ", "ISO 3166-2:KG", "Kyrgyzstan", "吉尔吉斯斯坦"),
@@ -148,7 +148,7 @@ public enum RegionEnum {
 	KW("414", "KW", "KWT", "ISO 3166-2:KW", "Kuwait", "科威特"),
 	KY("136", "KY", "CYM", "ISO 3166-2:KY", "Cayman Islands", "开曼群岛"),
 	KZ("398", "KZ", "KAZ", "ISO 3166-2:KZ", "Kazakhstan", "哈萨克斯坦"),
-	LA("418", "LA", "LAO", "ISO 3166-2:LA", "Laos", "老挝"), 
+	LA("418", "LA", "LAO", "ISO 3166-2:LA", "Laos", "老挝"),
 	LB("422", "LB", "LBN", "ISO 3166-2:LB", "Lebanon", "黎巴嫩"),
 	LC("662", "LC", "LCA", "ISO 3166-2:LC", "St. Lucia", "圣卢西亚"),
 	LI("438", "LI", "LIE", "ISO 3166-2:LI", "Liechtenstein", "列支敦士登"),
@@ -157,9 +157,9 @@ public enum RegionEnum {
 	LS("426", "LS", "LSO", "ISO 3166-2:LS", "Lesotho", "莱索托"),
 	LT("440", "LT", "LTU", "ISO 3166-2:LT", "Lithuania", "立陶宛"),
 	LU("442", "LU", "LUX", "ISO 3166-2:LU", "Luxembourg", "卢森堡"),
-	LV("428", "LV", "LVA", "ISO 3166-2:LV", "Latvia", "拉脱维亚"), 
+	LV("428", "LV", "LVA", "ISO 3166-2:LV", "Latvia", "拉脱维亚"),
 	LY("434", "LY", "LBY", "ISO 3166-2:LY", "Libya", "利比亚"),
-	MA("504", "MA", "MAR", "ISO 3166-2:MA", "Morocco", "摩洛哥"), 
+	MA("504", "MA", "MAR", "ISO 3166-2:MA", "Morocco", "摩洛哥"),
 	MC("492", "MC", "MCO", "ISO 3166-2:MC", "Monaco", "摩纳哥"),
 	MD("498", "MD", "MDA", "ISO 3166-2:MD", "Moldova", "摩尔多瓦"),
 	ME("499", "ME", "MNE", "ISO 3166-2:ME", "Montenegro", "黑山"),
@@ -169,7 +169,7 @@ public enum RegionEnum {
 	MK("807", "MK", "MKD", "ISO 3166-2:MK", "Republic of Macedonia (FYROM)", "马其顿"),
 	ML("466", "ML", "MLI", "ISO 3166-2:ML", "Mali", "马里"), // no ip
 	MM("104", "MM", "MMR", "ISO 3166-2:MM", "Myanmar (Burma)", "缅甸"),
-	MN("496", "MN", "MNG", "ISO 3166-2:MN", "Mongolia", "蒙古"), 
+	MN("496", "MN", "MNG", "ISO 3166-2:MN", "Mongolia", "蒙古"),
 	MO("446", "MO", "MAC", "ISO 3166-2:MO", "Macao", "中国澳门"),
 	MP("580", "MP", "MNP", "ISO 3166-2:MP", "Northern Mariana Islands", "北马里亚纳群岛"),
 	MQ("474", "MQ", "MTQ", "ISO 3166-2:MQ", "Martinique", "马提尼克"),
@@ -178,7 +178,7 @@ public enum RegionEnum {
 	MT("470", "MT", "MLT", "ISO 3166-2:MT", "Malta", "马耳他"),
 	MU("480", "MU", "MUS", "ISO 3166-2:MU", "Mauritius", "毛里求斯"),
 	MV("462", "MV", "MDV", "ISO 3166-2:MV", "Maldives", "马尔代夫"),
-	MW("454", "MW", "MWI", "ISO 3166-2:MW", "Malawi", "马拉维"), 
+	MW("454", "MW", "MWI", "ISO 3166-2:MW", "Malawi", "马拉维"),
 	MX("484", "MX", "MEX", "ISO 3166-2:MX", "Mexico", "墨西哥"),
 	MY("458", "MY", "MYS", "ISO 3166-2:MY", "Malaysia", "马来西亚"),
 	MZ("508", "MZ", "MOZ", "ISO 3166-2:MZ", "Mozambique", "莫桑比克"),
@@ -189,12 +189,12 @@ public enum RegionEnum {
 	NG("566", "NG", "NGA", "ISO 3166-2:NG", "Nigeria", "尼日利亚"),
 	NI("558", "NI", "NIC", "ISO 3166-2:NI", "Nicaragua", "尼加拉瓜"),
 	NL("528", "NL", "NLD", "ISO 3166-2:NL", "Netherlands", "荷兰"),
-	NO("578", "NO", "NOR", "ISO 3166-2:NO", "Norway", "挪威"), 
+	NO("578", "NO", "NOR", "ISO 3166-2:NO", "Norway", "挪威"),
 	NP("524", "NP", "NPL", "ISO 3166-2:NP", "Nepal", "尼泊尔"),
-	NR("520", "NR", "NRU", "ISO 3166-2:NR", "Nauru", "瑙鲁"), 
+	NR("520", "NR", "NRU", "ISO 3166-2:NR", "Nauru", "瑙鲁"),
 	NU("570", "NU", "NIU", "ISO 3166-2:NU", "Niue", "纽埃"),
 	NZ("554", "NZ", "NZL", "ISO 3166-2:NZ", "New Zealand", "新西兰"),
-	OM("512", "OM", "OMN", "ISO 3166-2:OM", "Oman", "阿曼"), 
+	OM("512", "OM", "OMN", "ISO 3166-2:OM", "Oman", "阿曼"),
 	PA("591", "PA", "PAN", "ISO 3166-2:PA", "Panama", "巴拿马"),
 	PE("604", "PE", "PER", "ISO 3166-2:PE", "Peru", "秘鲁"),
 	PF("258", "PF", "PYF", "ISO 3166-2:PF", "French polynesia", "法属波利尼西亚"),
@@ -206,9 +206,9 @@ public enum RegionEnum {
 	PN("612", "PN", "PCN", "ISO 3166-2:PN", "Pitcairn Islands", "皮特凯恩群岛"), // no ip
 	PR("630", "PR", "PRI", "ISO 3166-2:PR", "Puerto Rico", "波多黎各"),
 	PS("275", "PS", "PSE", "ISO 3166-2:PS", "Palestinian territories", "巴勒斯坦"),
-	PT("620", "PT", "PRT", "ISO 3166-2:PT", "Portugal", "葡萄牙"), 
+	PT("620", "PT", "PRT", "ISO 3166-2:PT", "Portugal", "葡萄牙"),
 	PW("585", "PW", "PLW", "ISO 3166-2:PW", "Palau", "帕劳"),
-	PY("600", "PY", "PRY", "ISO 3166-2:PY", "Paraguay", "巴拉圭"), 
+	PY("600", "PY", "PRY", "ISO 3166-2:PY", "Paraguay", "巴拉圭"),
 	QA("634", "QA", "QAT", "ISO 3166-2:QA", "Qatar", "卡塔尔"),
 	RE("638", "RE", "REU", "ISO 3166-2:RE", "Réunion", "留尼旺"),
 	RO("642", "RO", "ROU", "ISO 3166-2:RO", "Romania", "罗马尼亚"),
@@ -218,7 +218,7 @@ public enum RegionEnum {
 	SA("682", "SA", "SAU", "ISO 3166-2:SA", "Saudi Arabia", "沙特阿拉伯"),
 	SB("090", "SB", "SLB", "ISO 3166-2:SB", "Solomon Islands", "所罗门群岛"),
 	SC("690", "SC", "SYC", "ISO 3166-2:SC", "Seychelles", "塞舌尔"),
-	SD("729", "SD", "SDN", "ISO 3166-2:SD", "Sudan", "苏丹"), 
+	SD("729", "SD", "SDN", "ISO 3166-2:SD", "Sudan", "苏丹"),
 	SE("752", "SE", "SWE", "ISO 3166-2:SE", "Sweden", "瑞典"),
 	SG("702", "SG", "SGP", "ISO 3166-2:SG", "Singapore", "新加坡"),
 	SH("654", "SH", "SHN", "ISO 3166-2:SH", "St. Helena & Dependencies", "圣赫勒拿"), // no ip
@@ -239,20 +239,20 @@ public enum RegionEnum {
 	TD("148", "TD", "TCD", "ISO 3166-2:TD", "Chad", "乍得"),
 
 	TF("260", "TF", "ATF", "ISO 3166-2:TF", "French Southern Territories", "法属南部领地"), // no ip
-	TG("768", "TG", "TGO", "ISO 3166-2:TG", "Togo", "多哥"), 
+	TG("768", "TG", "TGO", "ISO 3166-2:TG", "Togo", "多哥"),
 	TH("764", "TH", "THA", "ISO 3166-2:TH", "Thailand", "泰国"),
 	TJ("762", "TJ", "TJK", "ISO 3166-2:TJ", "Tajikistan", "塔吉克斯坦"),
 	TK("772", "TK", "TKL", "ISO 3166-2:TK", "Tokelau", "托克劳群岛"),
 	TL("626", "TL", "TLS", "ISO 3166-2:TP", "Timor-Leste (East Timor)", "东帝汶"),
 	TM("795", "TM", "TKM", "ISO 3166-2:TM", "Turkmenistan", "土库曼斯坦"),
-	TN("788", "TN", "TUN", "ISO 3166-2:TN", "Tunisia", "突尼斯"), 
+	TN("788", "TN", "TUN", "ISO 3166-2:TN", "Tunisia", "突尼斯"),
 	TO("776", "TO", "TON", "ISO 3166-2:TO", "Tonga", "汤加"),
 	TR("792", "TR", "TUR", "ISO 3166-2:TR", "Turkey", "土耳其"),
 	TT("780", "TT", "TTO", "ISO 3166-2:TT", "Trinidad & Tobago", "特立尼达和多巴哥"),
-	TV("798", "TV", "TUV", "ISO 3166-2:TV", "Tuvalu", "图瓦卢"), 
+	TV("798", "TV", "TUV", "ISO 3166-2:TV", "Tuvalu", "图瓦卢"),
 	TW("158", "TW", "TWN", "ISO 3166-2:TW", "Taiwan", "中国台湾"),
 	TZ("834", "TZ", "TZA", "ISO 3166-2:TZ", "Tanzania", "坦桑尼亚"),
-	UA("804", "UA", "UKR", "ISO 3166-2:UA", "Ukraine", "乌克兰"), 
+	UA("804", "UA", "UKR", "ISO 3166-2:UA", "Ukraine", "乌克兰"),
 	UG("800", "UG", "UGA", "ISO 3166-2:UG", "Uganda", "乌干达"),
 	UM("581", "UM", "UMI", "ISO 3166-2:UM", "United States Minor Outlying Islands", "美国本土外小岛屿"),  // no ip
 
@@ -267,7 +267,7 @@ public enum RegionEnum {
 	VN("704", "VN", "VNM", "ISO 3166-2:VN", "Vietnam", "越南"),
 	VU("548", "VU", "VUT", "ISO 3166-2:VU", "Vanuatu", "瓦努阿图"),
 	WF("876", "WF", "WLF", "ISO 3166-2:WF", "Wallis and Futuna", "瓦利斯和富图纳"),
-	WS("882", "WS", "WSM", "ISO 3166-2:WS", "Samoa", "萨摩亚"), 
+	WS("882", "WS", "WSM", "ISO 3166-2:WS", "Samoa", "萨摩亚"),
 	YE("887", "YE", "YEM", "ISO 3166-2:YE", "Yemen", "也门"),
 	YT("175", "YT", "MYT", "ISO 3166-2:YT", "Mayotte", "马约特"),
 	ZA("710", "ZA", "ZAF", "ISO 3166-2:ZA", "South Africa", "南非"),
@@ -294,7 +294,7 @@ public enum RegionEnum {
 	private String currency;
 
 	private static Logger log = LoggerFactory.getLogger(RegionEnum.class);
-	
+
 	private RegionEnum(String number, String code2, String code3, String iso_code, String iso_name, String cname) {
 		this.number = number;
 		this.code2 = code2;
@@ -303,7 +303,7 @@ public enum RegionEnum {
 		this.iso_name = iso_name;
 		this.cname = cname;
 	}
-	
+
 	private RegionEnum(String number, String code2, String code3, String iso_code, String iso_name, String cname, String currency) {
 		this.number = number;
 		this.code2 = code2;
@@ -314,34 +314,34 @@ public enum RegionEnum {
 		this.currency = currency;
 	}
 
-	protected String getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	protected String getCode2() {
+	public String getCode2() {
 		return code2;
 	}
 
-	protected String getCode3() {
+	public String getCode3() {
 		return code3;
 	}
 
-	protected String getIsoCode() {
+	public String getIsoCode() {
 		return iso_code;
 	}
 
-	protected String getIsoName() {
+	public String getIsoName() {
 		return iso_name;
 	}
 
-	protected String getCname() {
+	public String getCname() {
 		return cname;
 	}
-	
+
 	public String getCurrency() {
 		return currency;
 	}
-	
+
 	public static RegionEnum getByNumber(String number) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getNumber().equalsIgnoreCase(number)) {
@@ -351,7 +351,7 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with number '" + number + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByCode2(String code2) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getCode2().equalsIgnoreCase(code2)) {
@@ -361,7 +361,7 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with code2 '" + code2 + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByCode3(String code3) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getCode3().equalsIgnoreCase(code3)) {
@@ -371,7 +371,7 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with code3 '" + code3 + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByIsoCode(String iso_code) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getIsoCode().equalsIgnoreCase(iso_code)) {
@@ -381,7 +381,7 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with iso_code '" + iso_code + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByIsoName(String iso_name) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getIsoName().equalsIgnoreCase(iso_name)) {
@@ -391,7 +391,7 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with iso_name '" + iso_name + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByCnName(String cn_name) {
 		for (RegionEnum region : RegionEnum.values()) {
 			if (region.getCname().equalsIgnoreCase(cn_name)) {
@@ -401,10 +401,10 @@ public enum RegionEnum {
 		log.error("Cannot found RegionEnum with cn_name '" + cn_name + "'.");
 		return RegionEnum.UK;
 	}
-	
+
 	public static RegionEnum getByRegionAddress(RegionAddress adress) {
 		for (RegionEnum region : RegionEnum.values()) {
-			if (region.getCname().equalsIgnoreCase(adress.getCountry()) || 
+			if (region.getCname().equalsIgnoreCase(adress.getCountry()) ||
 				region.getCname().equalsIgnoreCase(adress.getCountry() + adress.getCity())) {
 				return region;
 			}
