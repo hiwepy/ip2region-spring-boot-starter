@@ -35,11 +35,12 @@ public class IP2regionTemplate_Test {
 		System.out.println(adress2);
 		System.out.println(RegionEnum.getByRegionAddress(adress2));
 
-		RegionEnum regionEnum = template.getRegionByIp("13.228.204.118");
-
+		RegionEnum regionEnum = template.getRegionByIp("47.242.187.193");
+		System.out.println(regionEnum);
+		
 		System.out.println(template.binarySearch("127.0.0.1"));
 
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 1; i++) {
 			try {
 				System.out.println(df.format(new Date()) + ":" + template.binarySearch("127.0.0.1"));
 			} catch (IOException e) {
