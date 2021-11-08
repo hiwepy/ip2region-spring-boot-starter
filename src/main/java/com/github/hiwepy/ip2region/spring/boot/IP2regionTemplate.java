@@ -157,7 +157,7 @@ public class IP2regionTemplate implements DisposableBean {
 			log.info(" IP : {} >> Region : {} ", ip, region); // 0|未分配或者内网IP|0|0|0|0|8200
 			return region;
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Region Parser Error：{}", e.getMessage());
 			return NOT_MATCH;
 		} finally {
 			rwl.readLock().unlock();
@@ -171,7 +171,7 @@ public class IP2regionTemplate implements DisposableBean {
 			log.info(" IP : {} >> Region : {} ", ip, region); // 0|未分配或者内网IP|0|0|0|0|8200
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Region Parser Error：{}", e.getMessage());
 			return new RegionAddress(NOT_MATCH.split("\\|"));
 		} finally {
 			rwl.readLock().unlock();
@@ -187,7 +187,7 @@ public class IP2regionTemplate implements DisposableBean {
 			log.info(" IP : {} >> Country : {} ", ip, country);
 			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Region Parser Error：{}", e.getMessage());
 			return RegionEnum.UK.getCname();
 		} finally {
 			rwl.readLock().unlock();
@@ -207,7 +207,7 @@ public class IP2regionTemplate implements DisposableBean {
 			RegionAddress address = new RegionAddress(regionArr);
 			return RegionEnum.getByRegionAddress(address);
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Region Parser Error：{}", e.getMessage());
 			return RegionEnum.UK;
 		} finally {
 			rwl.readLock().unlock();
