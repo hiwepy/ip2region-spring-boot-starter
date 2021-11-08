@@ -164,7 +164,7 @@ public class IP2regionTemplate implements DisposableBean {
 		}
 	}
 
-	public RegionAddress getRegionAddress(String ip) throws IOException {
+	public RegionAddress getRegionAddress(String ip) {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
