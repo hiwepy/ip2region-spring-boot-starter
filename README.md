@@ -59,6 +59,6 @@ ip2region:
   external: false
   index-block-size: 4096
   total-header-size: 8192
-  location: classpath:ip2region/ip2region.db
+  location: classpath*:ip2region/ip2region.db
 ```
 
