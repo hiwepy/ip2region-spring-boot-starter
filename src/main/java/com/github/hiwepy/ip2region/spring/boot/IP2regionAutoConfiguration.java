@@ -3,6 +3,7 @@ package com.github.hiwepy.ip2region.spring.boot;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Objects;
 
 import org.nutz.plugins.ip2region.DBReader;
 import org.nutz.plugins.ip2region.DbConfig;
@@ -18,52 +19,50 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.util.FileCopyUtils;
 
 /**
- * 
+ * ip 解析
  */
 @Configuration
 @ConditionalOnClass(org.nutz.plugins.ip2region.DbSearcher.class)
 @EnableConfigurationProperties({ IP2regionProperties.class })
 public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 
-	private ResourceLoader resourceLoader;
-	
+	protected ResourceLoader resourceLoader = new PathMatchingResourcePatternResolver();
+
 	@Autowired
 	private IP2regionProperties properties;
-	
+
 	@Bean
 	public IP2regionTemplate ip2regionTemplate() throws IOException, DbMakerConfigException {
-		
+
 		DbSearcher dbSearcher = null;
 		if(properties.isExternal()) {
-			
-			DBReader reader = null;
+
 			// 查找resource
 			Resource resource = resourceLoader.getResource(properties.getLocation());
-			
-			if(resource.isFile() && resource.exists()) {
-				
-				reader = new RandomAccessFileDBReader(new RandomAccessFile(resource.getFile(), "r"));
-				
-			} else {
-				
+
+			if(resource.exists()){
+
 				ByteArrayOutputStream output = new ByteArrayOutputStream();
 				FileCopyUtils.copy(resource.getInputStream(), output);
-				reader = new ByteArrayDBReader(output.toByteArray());
-				
+				DBReader reader = new ByteArrayDBReader(output.toByteArray());
+
+				DbConfig dbConfig = new DbConfig(properties.getTotalHeaderSize());
+				dbConfig.setIndexBlockSize(properties.getIndexBlockSize());
+				dbSearcher = new DbSearcher(dbConfig, reader);
+
 			}
-			
-			DbConfig dbConfig = new DbConfig(properties.getTotalHeaderSize());
-			dbConfig.setIndexBlockSize(properties.getIndexBlockSize());
-			dbSearcher = new DbSearcher(dbConfig, reader);
-			
-		} else {
+
+		}
+		if(Objects.isNull(dbSearcher)){
 			dbSearcher = new DbSearcher();
 		}
-		
-		return new IP2regionTemplate(dbSearcher);  
+
+		return new IP2regionTemplate(dbSearcher);
 	}
 
 	@Override
