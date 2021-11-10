@@ -231,7 +231,10 @@ public class IP2regionTemplate implements DisposableBean {
 
 	public boolean isMainlandIp(String ip) {
 		RegionEnum regionEnum = this.getRegionByIp(ip);
-		return RegionEnum.CN.compareTo(regionEnum) == 0;
+		return RegionEnum.CN.compareTo(regionEnum) == 0 &&
+				RegionEnum.HK.compareTo(regionEnum) != 0 &&
+				RegionEnum.MO.compareTo(regionEnum) != 0 &&
+				RegionEnum.TW.compareTo(regionEnum) != 0;
 	}
 
 	@Override
