@@ -1,8 +1,11 @@
 package com.github.hiwepy.ip2region.spring.boot;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 import org.nutz.plugins.ip2region.DBReader;
@@ -42,26 +45,32 @@ public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 		DbSearcher dbSearcher = null;
 		if(properties.isExternal()) {
 
-			// 查找resource
-			Resource resource = resourceLoader.getResource(properties.getLocation());
+			DbConfig dbConfig = new DbConfig(properties.getTotalHeaderSize());
+			dbConfig.setIndexBlockSize(properties.getIndexBlockSize());
 
-			if(resource.exists()){
+			try {
+				if(new File(properties.getLocation()).exists()) {
+					// load ip2region.db from java.nio.file.Path
+					DBReader reader = new ByteArrayDBReader(Files.readAllBytes(Paths.get(properties.getLocation())));
+					dbSearcher = new DbSearcher(dbConfig, reader);
+				} else {
+					// 查找resource
+					Resource resource = resourceLoader.getResource(properties.getLocation());
+					if(resource.exists()){
 
-				ByteArrayOutputStream output = new ByteArrayOutputStream();
-				FileCopyUtils.copy(resource.getInputStream(), output);
-				DBReader reader = new ByteArrayDBReader(output.toByteArray());
-
-				DbConfig dbConfig = new DbConfig(properties.getTotalHeaderSize());
-				dbConfig.setIndexBlockSize(properties.getIndexBlockSize());
-				dbSearcher = new DbSearcher(dbConfig, reader);
-
+						ByteArrayOutputStream output = new ByteArrayOutputStream();
+						FileCopyUtils.copy(resource.getInputStream(), output);
+						DBReader reader = new ByteArrayDBReader(output.toByteArray());
+						dbSearcher = new DbSearcher(dbConfig, reader);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				dbSearcher = new DbSearcher();
 			}
-
-		}
-		if(Objects.isNull(dbSearcher)){
+		} else {
 			dbSearcher = new DbSearcher();
 		}
-
 		return new IP2regionTemplate(dbSearcher);
 	}
 
