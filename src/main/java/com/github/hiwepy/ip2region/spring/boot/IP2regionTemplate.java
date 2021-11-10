@@ -18,8 +18,6 @@ package com.github.hiwepy.ip2region.spring.boot;
 import java.io.IOException;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
-import com.github.hiwepy.ip2region.spring.boot.util.IpUtils;
 import org.nutz.plugins.ip2region.DataBlock;
 import org.nutz.plugins.ip2region.DbSearcher;
 import org.slf4j.Logger;
@@ -27,6 +25,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
+import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
+import com.github.hiwepy.ip2region.spring.boot.util.IpUtils;
 
 public class IP2regionTemplate implements DisposableBean {
 

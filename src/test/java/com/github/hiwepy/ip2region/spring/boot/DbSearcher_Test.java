@@ -26,8 +26,8 @@ public class DbSearcher_Test {
 		DbSearcher searcher = new DbSearcher(dbConfig, reader);
 
 		System.out.println(searcher.btreeSearch(1610329044 ).getRegion());
-		System.out.println(searcher.binarySearch("47.242.187.193").getRegion());
-		System.out.println(searcher.memorySearch("47.242.187.193").getRegion());
+		System.out.println(searcher.binarySearch("183.128.136.82").getRegion());
+		System.out.println(searcher.memorySearch("183.128.136.82").getRegion());
 		/**
 		 * for (int i = 1; i < 255; i++) {
 		 *
