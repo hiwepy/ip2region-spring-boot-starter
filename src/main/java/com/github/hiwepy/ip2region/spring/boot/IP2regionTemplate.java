@@ -163,7 +163,7 @@ public class IP2regionTemplate implements DisposableBean {
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH;
 		} finally {
 			rwl.readLock().unlock();
@@ -180,7 +180,7 @@ public class IP2regionTemplate implements DisposableBean {
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH_REGION_ADDRESS;
 		} finally {
 			rwl.readLock().unlock();
@@ -196,10 +196,10 @@ public class IP2regionTemplate implements DisposableBean {
 			String region = dbSearcher.memorySearch(ip).getRegion();
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			String country = region.split("\\|")[0];
-			log.info(" IP : {} >> Country : {} ", ip, country);
+			log.info(" IP : {} >> Country/Region : {} ", ip, country);
 			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK.getCname();
 		} finally {
 			rwl.readLock().unlock();
@@ -222,11 +222,16 @@ public class IP2regionTemplate implements DisposableBean {
 			RegionAddress address = new RegionAddress(regionArr);
 			return RegionEnum.getByRegionAddress(address);
 		} catch (Exception e) {
-			log.error("IP Region Parser Error：{}", e.getMessage());
+			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK;
 		} finally {
 			rwl.readLock().unlock();
 		}
+	}
+
+	public boolean isMainlandIp(String ip) {
+		RegionEnum regionEnum = this.getRegionByIp(ip);
+		return RegionEnum.CN.compareTo(regionEnum) == 0;
 	}
 
 	@Override
