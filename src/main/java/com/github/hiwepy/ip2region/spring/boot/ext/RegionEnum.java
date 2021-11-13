@@ -439,6 +439,13 @@ public enum RegionEnum {
 		return RegionEnum.CN.equals(region);
 	}
 
+	public boolean isValidRegion() {
+		return !RegionEnum.UK.equals(this) && !RegionEnum.TS.equals(this);
+	}
+
+	public boolean isChinaRegion() {
+		return RegionEnum.CN.equals(this) || RegionEnum.HK.equals(this) || RegionEnum.MO.equals(this) || RegionEnum.TW.equals(this);
+	}
 	public boolean equals(RegionEnum region) {
 		return this.compareTo(region) == 0;
 	}
