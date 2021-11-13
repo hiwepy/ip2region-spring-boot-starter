@@ -446,6 +446,11 @@ public enum RegionEnum {
 	public boolean isChinaRegion() {
 		return RegionEnum.CN.equals(this) || RegionEnum.HK.equals(this) || RegionEnum.MO.equals(this) || RegionEnum.TW.equals(this);
 	}
+
+	public boolean isChinaMainland() {
+		return RegionEnum.CN.equals(this);
+	}
+
 	public boolean equals(RegionEnum region) {
 		return this.compareTo(region) == 0;
 	}
