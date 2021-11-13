@@ -415,4 +415,32 @@ public enum RegionEnum {
 		return RegionEnum.UK;
 	}
 
+	public static boolean isValidRegion(RegionEnum region) {
+		return !RegionEnum.UK.equals(region) && !RegionEnum.TS.equals(region);
+	}
+
+	public static boolean isChinaRegion(RegionEnum region) {
+		return RegionEnum.CN.equals(region) || RegionEnum.HK.equals(region) || RegionEnum.MO.equals(region) || RegionEnum.TW.equals(region);
+	}
+
+	public static boolean isChinaRegion(String countryCode) {
+		RegionEnum region = RegionEnum.getByCode2(countryCode);
+		if(RegionEnum.UK.equals(region)) {
+			region = RegionEnum.getByCode3(countryCode);
+		}
+		return isChinaRegion(region);
+	}
+
+	public static boolean isMainland(String countryCode) {
+		RegionEnum region = RegionEnum.getByCode2(countryCode);
+		if(RegionEnum.UK.equals(region)) {
+			region = RegionEnum.getByCode3(countryCode);
+		}
+		return RegionEnum.CN.equals(region);
+	}
+
+	public boolean equals(RegionEnum region) {
+		return this.compareTo(region) == 0;
+	}
+
 }
