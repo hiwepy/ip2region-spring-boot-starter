@@ -56,9 +56,7 @@ public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 				} else {
 					// 查找resource
 					Resource resource = resourceLoader.getResource(properties.getLocation());
-					if(resource.exists()){
-
-						ByteArrayOutputStream output = new ByteArrayOutputStream();
+					try(ByteArrayOutputStream output = new ByteArrayOutputStream();) {
 						FileCopyUtils.copy(resource.getInputStream(), output);
 						DBReader reader = new ByteArrayDBReader(output.toByteArray());
 						dbSearcher = new DbSearcher(dbConfig, reader);

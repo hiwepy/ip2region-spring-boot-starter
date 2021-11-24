@@ -156,13 +156,11 @@ public class IP2regionTemplate implements DisposableBean {
 	public String getRegion(String ip) {
 		try {
 			rwl.readLock().lock();
-			if(!IpUtils.isIpv4(ip)){
-				return NOT_MATCH;
-			}
 			String region = dbSearcher.memorySearch(ip).getRegion();
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH;
 		} finally {
@@ -173,13 +171,11 @@ public class IP2regionTemplate implements DisposableBean {
 	public RegionAddress getRegionAddress(String ip) {
 		try {
 			rwl.readLock().lock();
-			if(!IpUtils.isIpv4(ip)){
-				return NOT_MATCH_REGION_ADDRESS;
-			}
 			String region = dbSearcher.memorySearch(ip).getRegion();
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH_REGION_ADDRESS;
 		} finally {
@@ -190,15 +186,13 @@ public class IP2regionTemplate implements DisposableBean {
 	public String getCountryByIp(String ip) {
 		try {
 			rwl.readLock().lock();
-			if(!IpUtils.isIpv4(ip)){
-				return RegionEnum.UK.getCname();
-			}
 			String region = dbSearcher.memorySearch(ip).getRegion();
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			String country = region.split("\\|")[0];
 			log.info(" IP : {} >> Country/Region : {} ", ip, country);
 			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK.getCname();
 		} finally {
@@ -209,9 +203,6 @@ public class IP2regionTemplate implements DisposableBean {
 	public RegionEnum getRegionByIp(String ip) {
 		try {
 			rwl.readLock().lock();
-			if(!IpUtils.isIpv4(ip)){
-				return RegionEnum.UK;
-			}
 			String region = dbSearcher.memorySearch(ip).getRegion();
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			String[] regionArr = region.split("\\|");
@@ -222,6 +213,7 @@ public class IP2regionTemplate implements DisposableBean {
 			RegionAddress address = new RegionAddress(regionArr);
 			return RegionEnum.getByRegionAddress(address);
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK;
 		} finally {
