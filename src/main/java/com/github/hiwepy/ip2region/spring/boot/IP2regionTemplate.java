@@ -157,7 +157,7 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.info(" IP : {} >> Region : {} ", ip, region);
+			log.debug(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -172,7 +172,7 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.info(" IP : {} >> Region : {} ", ip, region);
+			log.debug(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -187,9 +187,9 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.info(" IP : {} >> Region : {} ", ip, region);
+			log.debug(" IP : {} >> Region : {} ", ip, region);
 			String country = region.split("\\|")[0];
-			log.info(" IP : {} >> Country/Region : {} ", ip, country);
+			log.debug(" IP : {} >> Country/Region : {} ", ip, country);
 			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -204,9 +204,9 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.info(" IP : {} >> Region : {} ", ip, region);
+			log.debug(" IP : {} >> Region : {} ", ip, region);
 			String[] regionArr = region.split("\\|");
-			log.info(" IP : {} >> Country : {} ", ip, regionArr[0]);
+			log.debug(" IP : {} >> Country : {} ", ip, regionArr[0]);
 			if(NOT_MATCH.contains(regionArr[0])){
 				return RegionEnum.UK;
 			}

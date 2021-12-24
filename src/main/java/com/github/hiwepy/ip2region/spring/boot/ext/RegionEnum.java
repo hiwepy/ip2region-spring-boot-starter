@@ -350,7 +350,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with number '" + number + "'.");
+		log.debug("Cannot found RegionEnum with number '" + number + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -360,7 +360,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with code2 '" + code2 + "'.");
+		log.debug("Cannot found RegionEnum with code2 '" + code2 + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -370,7 +370,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with code3 '" + code3 + "'.");
+		log.debug("Cannot found RegionEnum with code3 '" + code3 + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -380,7 +380,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with iso_code '" + iso_code + "'.");
+		log.debug("Cannot found RegionEnum with iso_code '" + iso_code + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -390,7 +390,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with iso_name '" + iso_name + "'.");
+		log.debug("Cannot found RegionEnum with iso_name '" + iso_name + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -400,7 +400,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with cn_name '" + cn_name + "'.");
+		log.debug("Cannot found RegionEnum with cn_name '" + cn_name + "'.");
 		return RegionEnum.UK;
 	}
 
@@ -411,7 +411,7 @@ public enum RegionEnum {
 				return region;
 			}
 		}
-		log.error("Cannot found RegionEnum with '" + adress.toString() + "'.");
+		log.debug("Cannot found RegionEnum with '" + adress.toString() + "'.");
 		return RegionEnum.UK;
 	}
 
