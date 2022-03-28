@@ -41,7 +41,7 @@ public class IP2regionTemplate_Test {
 
 		System.out.println(template.getRegion("114.124.146.103"));
 
-		RegionAddress adress1 = template.getRegionAddress("114.124.146.103");
+		RegionAddress adress1 = template.getRegionAddress("113.210.53.80");
 		System.out.println(adress1);
 		System.out.println(RegionEnum.getByRegionAddress(adress1));
 
@@ -49,7 +49,7 @@ public class IP2regionTemplate_Test {
 		System.out.println(adress2);
 		System.out.println(RegionEnum.getByRegionAddress(adress2));
 
-		RegionEnum regionEnum = template.getRegionByIp("182.3.196.75");
+		RegionEnum regionEnum = template.getRegionByIp("102.42.140.162");
 		System.out.println(regionEnum);
 
 		System.out.println(template.binarySearch("127.0.0.1"));
