@@ -1,11 +1,8 @@
 package com.github.hiwepy.ip2region.spring.boot;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.nutz.plugins.ip2region.DBReader;
 import org.nutz.plugins.ip2region.DbConfig;
@@ -18,11 +15,10 @@ import org.springframework.util.FileCopyUtils;
 
 public class IP2regionTemplate_Test {
 
-	private static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+	IP2regionTemplate template = null;
 
-	@Test
-	public void templateTest() throws Exception {
-
+	@Before
+	public void setUp()  throws Exception {
 		DbConfig dbConfig = new DbConfig(8192);
 		dbConfig.setIndexBlockSize(4096);
 
@@ -34,11 +30,14 @@ public class IP2regionTemplate_Test {
 
 		DbSearcher searcher = new DbSearcher(dbConfig, reader);
 
-		IP2regionTemplate template = new IP2regionTemplate(searcher);
+		template = new IP2regionTemplate(searcher);
+	}
+
+
+	@Test
+	public void templateTest() throws Exception {
 
 		System.out.println(template.getCountryByIp("127.0.0.1"));
-
-
 		System.out.println(template.getRegion("114.124.146.103"));
 
 		RegionAddress adress1 = template.getRegionAddress("113.210.53.80");
@@ -53,25 +52,6 @@ public class IP2regionTemplate_Test {
 		System.out.println(regionEnum);
 
 		System.out.println(template.binarySearch("127.0.0.1"));
-
-		/*
-
-
-		for (int i = 0; i < 1000; i++) {
-			new Thread() {
-
-				public void run() {
-
-					try {
-						System.out.println(df.format(new Date()) + ":" + template.binarySearch("127.0.0.1"));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-
-				};
-
-			}.run();
-		}*/
 
 	}
 
