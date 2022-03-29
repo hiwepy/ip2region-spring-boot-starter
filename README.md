@@ -16,7 +16,7 @@ Spring Boot Starter For ip2region
 <dependency>
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>ip2region-spring-boot-starter</artifactId>
-	<version>${project.version}</version>
+	<version>1.0.8.RELEASE</version>
 </dependency>
 ```
 
