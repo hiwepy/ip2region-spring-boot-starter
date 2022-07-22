@@ -362,7 +362,8 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
 		<maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
-		<ip2region-nutz.version>1.r.68.v20201205</ip2region-nutz.version>
+		<!--<ip2region.version>2.6.5</ip2region.version>-->
+		<ip2region-nutz.version>1.r.69.v20220215</ip2region-nutz.version>
 	</properties>
 
 	<dependencies>
@@ -420,7 +421,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.lionsoul/ip2region
+		<dependency>
+			<groupId>org.lionsoul</groupId>
+			<artifactId>ip2region</artifactId>
+			<version>${ip2region.version}</version>
+		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.nutz/nutz-plugins-ip2region -->
 		<dependency>
 		    <groupId>org.nutz</groupId>
