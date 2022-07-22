@@ -362,7 +362,7 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
 		<maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
-		<ip2region-nutz.version>1.r.68.v20201205</ip2region-nutz.version>
+		<ip2region-nutz.version>1.r.69.v20220215</ip2region-nutz.version>
 	</properties>
 
 	<dependencies>
