@@ -16,7 +16,8 @@ public class RegionAddress {
     }
 
     /**
-     * Translate this string "中国|华东|江苏省|南京市|电信" to location fields.
+     *
+     * Translate this string "中国|华东|江苏省|南京市|电信" or "印度尼西亚|0|大雅加达|雅加达|Telin" to location fields.
      * @param region location region address info array
      */
     public RegionAddress(String[] region) {

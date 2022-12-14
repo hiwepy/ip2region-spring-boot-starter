@@ -8,12 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import org.lionsoul.ip2region.xdb.Searcher;
 import org.nutz.plugins.ip2region.DBReader;
 import org.nutz.plugins.ip2region.DbConfig;
 import org.nutz.plugins.ip2region.DbMakerConfigException;
 import org.nutz.plugins.ip2region.DbSearcher;
 import org.nutz.plugins.ip2region.impl.ByteArrayDBReader;
 import org.nutz.plugins.ip2region.impl.RandomAccessFileDBReader;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -36,18 +38,14 @@ public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 
 	protected ResourceLoader resourceLoader = new PathMatchingResourcePatternResolver();
 
-	@Autowired
-	private IP2regionProperties properties;
-
 	@Bean
-	public IP2regionTemplate ip2regionTemplate() throws IOException, DbMakerConfigException {
+	public IP2regionTemplate ip2regionTemplate(IP2regionProperties properties) throws IOException, DbMakerConfigException {
 
 		DbSearcher dbSearcher = null;
 		if(properties.isExternal()) {
 
 			DbConfig dbConfig = new DbConfig(properties.getTotalHeaderSize());
 			dbConfig.setIndexBlockSize(properties.getIndexBlockSize());
-
 			try {
 				if(new File(properties.getLocation()).exists()) {
 					// load ip2region.db from java.nio.file.Path
@@ -70,6 +68,11 @@ public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 			dbSearcher = new DbSearcher();
 		}
 		return new IP2regionTemplate(dbSearcher);
+	}
+
+	@Bean
+	public IP2regionXdbTemplate ip2regionXdbTemplate(IP2regionProperties properties) throws IOException {
+		return new IP2regionXdbTemplate(properties.getXdbLocation());
 	}
 
 	@Override

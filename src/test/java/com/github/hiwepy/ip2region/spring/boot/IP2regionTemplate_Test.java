@@ -51,7 +51,8 @@ public class IP2regionTemplate_Test {
 		RegionEnum regionEnum = template.getRegionByIp("102.42.140.162");
 		System.out.println(regionEnum);
 
-		System.out.println(template.binarySearch("127.0.0.1"));
+		System.out.println(template.memorySearch("114.124.146.103"));
+		System.out.println(template.memorySearch("115.193.169.84"));
 
 	}
 

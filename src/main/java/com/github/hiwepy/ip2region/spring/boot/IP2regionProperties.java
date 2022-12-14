@@ -1,8 +1,10 @@
 package com.github.hiwepy.ip2region.spring.boot;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(IP2regionProperties.PREFIX)
+@Data
 public class IP2regionProperties {
 
 	public static final String PREFIX = "ip2region";
@@ -15,6 +17,10 @@ public class IP2regionProperties {
 	 * ip2region.db 文件路径，默认： classpath:ip2region/ip2region.db
 	 */
 	private String location = "classpath:ip2region/ip2region.db";
+	/**
+	 * ip2region.db 文件路径，默认：tmp/ip2region.xdb
+	 */
+	private String xdbLocation = "tmp/ip2region.xdb";
 
 	/**
 	 * total header data block size, must be times of 8; default 8192
@@ -25,37 +31,5 @@ public class IP2regionProperties {
 	 * size;default 4 * 1024 = 4096
 	 */
 	private int indexBlockSize = 4096;
-
-	public boolean isExternal() {
-		return external;
-	}
-
-	public void setExternal(boolean external) {
-		this.external = external;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public int getTotalHeaderSize() {
-		return totalHeaderSize;
-	}
-
-	public void setTotalHeaderSize(int totalHeaderSize) {
-		this.totalHeaderSize = totalHeaderSize;
-	}
-
-	public int getIndexBlockSize() {
-		return indexBlockSize;
-	}
-
-	public void setIndexBlockSize(int indexBlockSize) {
-		this.indexBlockSize = indexBlockSize;
-	}
 
 }
