@@ -157,10 +157,10 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.debug(" IP : {} >> Region : {} ", ip, region);
+			log.info(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
-			log.debug("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH;
 		} finally {
 			rwl.readLock().unlock();
@@ -171,10 +171,10 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.debug(" IP : {} >> Region : {} ", ip, region);
+			log.info(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
-			log.debug("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return NOT_MATCH_REGION_ADDRESS;
 		} finally {
 			rwl.readLock().unlock();
@@ -185,12 +185,12 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.debug(" IP : {} >> Region : {} ", ip, region);
+			log.info(" IP : {} >> Region : {} ", ip, region);
 			String country = region.split("\\|")[0];
-			log.debug(" IP : {} >> Country/Region : {} ", ip, country);
+			log.info(" IP : {} >> Country/Region : {} ", ip, country);
 			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
-			log.debug("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK.getCname();
 		} finally {
 			rwl.readLock().unlock();
@@ -201,16 +201,16 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = dbSearcher.memorySearch(ip).getRegion();
-			log.debug(" IP : {} >> Region : {} ", ip, region);
+			log.info(" IP : {} >> Region : {} ", ip, region);
 			String[] regionArr = region.split("\\|");
-			log.debug(" IP : {} >> Country : {} ", ip, regionArr[0]);
+			log.info(" IP : {} >> Country : {} ", ip, regionArr[0]);
 			if(NOT_MATCH.contains(regionArr[0])){
 				return RegionEnum.UK;
 			}
 			RegionAddress address = new RegionAddress(regionArr);
 			return RegionEnum.getByRegionAddress(address);
 		} catch (Exception e) {
-			log.debug("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK;
 		} finally {
 			rwl.readLock().unlock();
