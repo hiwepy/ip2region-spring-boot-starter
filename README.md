@@ -27,8 +27,6 @@ Spring Boot Starter For ip2region
 ```yaml
 ip2region:
   external: false
-  index-block-size: 4096
-  total-header-size: 8192
   location: classpath*:ip2region/ip2region.db
 ```
 
@@ -56,10 +54,8 @@ public class Application {
     @PostConstruct
     public void test() throws IOException {
 
-        System.out.println( template.btreeSearch("61.94.43.82"));
-        System.out.println( template.binarySearch("61.94.43.82"));
         System.out.println( template.memorySearch("61.94.43.82"));
-        System.out.println(template.binarySearch("127.0.0.1"));
+        System.out.println(template.memorySearch("127.0.0.1"));
 
         // 根据IP获取对应国家
         System.out.println(template.getCountryByIp("127.0.0.1"));
