@@ -14,22 +14,8 @@ public class IP2regionProperties {
 	 */
 	private boolean external = false;
 	/**
-	 * ip2region.db 文件路径，默认： classpath:ip2region/ip2region.db
+	 * ip2region.xdb 文件路径，默认： classpath:ip2region/ip2region.xdb
 	 */
-	private String location = "classpath:ip2region/ip2region.db";
-	/**
-	 * ip2region.db 文件路径，默认：tmp/ip2region.xdb
-	 */
-	private String xdbLocation = "tmp/ip2region.xdb";
-
-	/**
-	 * total header data block size, must be times of 8; default 8192
-	 */
-	private int totalHeaderSize = 8192;
-	/**
-	 * max index data block size u should always choice the fastest read block
-	 * size;default 4 * 1024 = 4096
-	 */
-	private int indexBlockSize = 4096;
+	private String location = "classpath:ip2region/ip2region.xdb";
 
 }

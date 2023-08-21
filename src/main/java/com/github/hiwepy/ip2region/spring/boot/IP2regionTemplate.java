@@ -15,153 +15,43 @@
  */
 package com.github.hiwepy.ip2region.spring.boot;
 
-import java.io.IOException;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import org.nutz.plugins.ip2region.DataBlock;
-import org.nutz.plugins.ip2region.DbSearcher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.DisposableBean;
-
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
-import com.github.hiwepy.ip2region.spring.boot.util.IpUtils;
+import com.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.DisposableBean;
 
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+@Slf4j
 public class IP2regionTemplate implements DisposableBean {
 
-	protected Logger log = LoggerFactory.getLogger(IP2regionTemplate.class);
-	protected DbSearcher dbSearcher = null;
 	protected ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
-	protected static String NOT_MATCH = "未分配或者内网IP|0|0|0|0";
-	protected static RegionAddress NOT_MATCH_REGION_ADDRESS = new RegionAddress(NOT_MATCH.split("\\|"));
+	protected XdbSearcher xdbSearcher;
 
-	public IP2regionTemplate(final DbSearcher dbSearcher) throws IOException {
-		this.dbSearcher = dbSearcher;
+	public IP2regionTemplate(XdbSearcher xdbSearcher) throws IOException {
+		this.xdbSearcher = xdbSearcher;
 	}
 
-	/**
-	 * get the region with a int ip address with memory binary search algorithm
-	 *
-	 * @param ip ： int ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock memorySearch(long ip) throws IOException {
-		try {
-
-			rwl.readLock().lock();
-			return dbSearcher.memorySearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
+	public String memorySearch(long ip) throws IOException {
+		return xdbSearcher.memorySearch(ip);
 	}
 
-	/**
-	 * get the region throught the ip address with memory binary search algorithm
-	 *
-	 * @param ip ： string ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock memorySearch(String ip) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.memorySearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
-	/**
-	 * get by index ptr
-	 *
-	 * @param ptr ： index ptr
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock getByIndexPtr(long ptr) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.getByIndexPtr(ptr);
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
-	/**
-	 * get the region with a int ip address with b-tree algorithm
-	 *
-	 * @param ip ： int ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock btreeSearch(long ip) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.btreeSearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
-	/**
-	 * get the region throught the ip address with b-tree search algorithm
-	 *
-	 * @param ip ： string ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock btreeSearch(String ip) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.btreeSearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
-	/**
-	 * get the region with a int ip address with binary search algorithm
-	 *
-	 * @param ip ： int ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock binarySearch(long ip) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.binarySearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
-	/**
-	 * get the region throught the ip address with binary search algorithm
-	 *
-	 * @param ip ： string ip address
-	 * @return {@link DataBlock} instance
-	 * @throws IOException if reader db file error
-	 */
-	public DataBlock binarySearch(String ip) throws IOException {
-		try {
-			rwl.readLock().lock();
-			return dbSearcher.binarySearch(ip);
-		} finally {
-			rwl.readLock().unlock();
-		}
+	public String memorySearch(String ip) throws IOException {
+		return xdbSearcher.memorySearch(ip);
 	}
 
 	public String getRegion(String ip) {
 		try {
 			rwl.readLock().lock();
-			String region = dbSearcher.memorySearch(ip).getRegion();
+			String region = xdbSearcher.memorySearch(ip);
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
-			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
-			return NOT_MATCH;
+			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			return XdbSearcher.NOT_MATCH;
 		} finally {
 			rwl.readLock().unlock();
 		}
@@ -170,12 +60,13 @@ public class IP2regionTemplate implements DisposableBean {
 	public RegionAddress getRegionAddress(String ip) {
 		try {
 			rwl.readLock().lock();
-			String region = dbSearcher.memorySearch(ip).getRegion();
+			// {region: 美国|0|华盛顿|0|谷歌, ioCount: 7, took: 82 μs}
+			String region = xdbSearcher.memorySearch(ip);
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
 			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
-			return NOT_MATCH_REGION_ADDRESS;
+			return XdbSearcher.NOT_MATCH_REGION_ADDRESS;
 		} finally {
 			rwl.readLock().unlock();
 		}
@@ -184,11 +75,11 @@ public class IP2regionTemplate implements DisposableBean {
 	public String getCountryByIp(String ip) {
 		try {
 			rwl.readLock().lock();
-			String region = dbSearcher.memorySearch(ip).getRegion();
+			String region = xdbSearcher.memorySearch(ip);
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			String country = region.split("\\|")[0];
 			log.info(" IP : {} >> Country/Region : {} ", ip, country);
-			return NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
+			return XdbSearcher.NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
 		} catch (Exception e) {
 			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK.getCname();
@@ -200,11 +91,11 @@ public class IP2regionTemplate implements DisposableBean {
 	public RegionEnum getRegionByIp(String ip) {
 		try {
 			rwl.readLock().lock();
-			String region = dbSearcher.memorySearch(ip).getRegion();
+			String region = xdbSearcher.memorySearch(ip);
 			log.info(" IP : {} >> Region : {} ", ip, region);
 			String[] regionArr = region.split("\\|");
 			log.info(" IP : {} >> Country : {} ", ip, regionArr[0]);
-			if(NOT_MATCH.contains(regionArr[0])){
+			if(XdbSearcher.NOT_MATCH.contains(regionArr[0])){
 				return RegionEnum.UK;
 			}
 			RegionAddress address = new RegionAddress(regionArr);
@@ -227,7 +118,9 @@ public class IP2regionTemplate implements DisposableBean {
 
 	@Override
 	public void destroy() throws Exception {
-		dbSearcher.close();
+		if(Objects.nonNull(xdbSearcher)){
+			xdbSearcher.destroy();
+		}
 	}
 
 }
