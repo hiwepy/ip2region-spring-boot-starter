@@ -437,7 +437,7 @@
 			<groupId>org.lionsoul</groupId>
 			<artifactId>ip2region</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.nutz/nutz-plugins-ip2region -->
+		<!-- https://mvnrepository.com/artifact/org.nutz/nutz-plugins-ip2region
 		<dependency>
 		    <groupId>org.nutz</groupId>
 		    <artifactId>nutz-plugins-ip2region</artifactId>
@@ -448,7 +448,7 @@
 		    		<artifactId>nutz</artifactId>
 		    	</exclusion>
 		    </exclusions>
-		</dependency>
+		</dependency>-->
 
 	</dependencies>
 
