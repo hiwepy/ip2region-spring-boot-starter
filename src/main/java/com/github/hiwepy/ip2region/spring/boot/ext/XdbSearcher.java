@@ -90,7 +90,7 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
         long sTime = System.nanoTime();
         String region = searcher.search(ip);
         long cost = TimeUnit.NANOSECONDS.toMicros((long) (System.nanoTime() - sTime));
-        log.info(" IP : {} >> { region: {}, ioCount: {}, took: {} μs }\n", ip, region, searcher.getIOCount(), cost);
+        log.info(" IP : {} >> { region: {}, ioCount: {}, took: {} μs }\n", Searcher.long2ip(ip), region, searcher.getIOCount(), cost);
         // not matched
         if (!StringUtils.hasText(region)) {
             return NOT_MATCH;
