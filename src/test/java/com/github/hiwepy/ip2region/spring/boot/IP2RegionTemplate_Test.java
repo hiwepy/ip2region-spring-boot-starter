@@ -12,7 +12,7 @@ public class IP2RegionTemplate_Test {
 
 	@Before
 	public void setUp()  throws Exception {
-		String dbPath = "D:\\tmp\\ip2region-2.11.0\\data\\ip2region.xdb";
+		String dbPath = "D:\\data\\ip2region.xdb";
 		XdbSearcher xdbSearcher = new XdbSearcher(dbPath);
 		template = new IP2regionTemplate(xdbSearcher);
 	}
