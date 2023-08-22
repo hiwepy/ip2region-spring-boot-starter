@@ -12,7 +12,7 @@ import java.io.IOException;
  * ip 解析
  */
 @Configuration
-@ConditionalOnClass(org.nutz.plugins.ip2region.DbSearcher.class)
+@ConditionalOnClass(org.lionsoul.ip2region.xdb.Searcher.class)
 @EnableConfigurationProperties({ IP2regionProperties.class })
 public class IP2regionAutoConfiguration {
 

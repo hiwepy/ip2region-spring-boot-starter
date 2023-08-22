@@ -44,16 +44,18 @@
 	</developers>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<name>Maven Snapshots Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
 		<repository>
-		    <id>ossrh</id>
-			<name>Maven Central Staging Repository</name>
-		    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		  </repository>
+			<!--必须与 settings.xml 的 id 一致-->
+			<id>aiban-tianyin-core</id>
+			<name>core</name>
+			<url>https://aiban-maven.pkg.coding.net/repository/tianyin/core/</url>
+		</repository>
+		<!--        <snapshotRepository>-->
+		<!--            <id>nexus-snapshots</id>-->
+		<!--            <name>Nexus Snapshot Repository</name>-->
+		<!--            <url>https://nexus.hiwepy.com/repository/maven-snapshots/</url>-->
+		<!--			<uniqueVersion>true</uniqueVersion>-->
+		<!--        </snapshotRepository>-->
 	</distributionManagement>
 
 	<build>
