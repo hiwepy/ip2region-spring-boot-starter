@@ -47,7 +47,6 @@ public class IP2regionTemplate implements DisposableBean {
 		try {
 			rwl.readLock().lock();
 			String region = xdbSearcher.memorySearch(ip);
-			log.info(" IP : {} >> Region : {} ", ip, region);
 			return region;
 		} catch (Exception e) {
 			log.error("IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
@@ -62,7 +61,6 @@ public class IP2regionTemplate implements DisposableBean {
 			rwl.readLock().lock();
 			// {region: 美国|0|华盛顿|0|谷歌, ioCount: 7, took: 82 μs}
 			String region = xdbSearcher.memorySearch(ip);
-			log.info(" IP : {} >> Region : {} ", ip, region);
 			return new RegionAddress(region.split("\\|"));
 		} catch (Exception e) {
 			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
@@ -72,27 +70,10 @@ public class IP2regionTemplate implements DisposableBean {
 		}
 	}
 
-	public String getCountryByIp(String ip) {
-		try {
-			rwl.readLock().lock();
-			String region = xdbSearcher.memorySearch(ip);
-			log.info(" IP : {} >> Region : {} ", ip, region);
-			String country = region.split("\\|")[0];
-			log.info(" IP : {} >> Country/Region : {} ", ip, country);
-			return XdbSearcher.NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
-		} catch (Exception e) {
-			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
-			return RegionEnum.UK.getCname();
-		} finally {
-			rwl.readLock().unlock();
-		}
-	}
-
 	public RegionEnum getRegionByIp(String ip) {
 		try {
 			rwl.readLock().lock();
 			String region = xdbSearcher.memorySearch(ip);
-			log.info(" IP : {} >> Region : {} ", ip, region);
 			String[] regionArr = region.split("\\|");
 			log.info(" IP : {} >> Country : {} ", ip, regionArr[0]);
 			if(XdbSearcher.NOT_MATCH.contains(regionArr[0])){
@@ -103,6 +84,21 @@ public class IP2regionTemplate implements DisposableBean {
 		} catch (Exception e) {
 			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
 			return RegionEnum.UK;
+		} finally {
+			rwl.readLock().unlock();
+		}
+	}
+
+	public String getCountryByIp(String ip) {
+		try {
+			rwl.readLock().lock();
+			String region = xdbSearcher.memorySearch(ip);
+			String country = region.split("\\|")[0];
+			log.info(" IP : {} >> Country/Region : {} ", ip, country);
+			return XdbSearcher.NOT_MATCH.contains(country) ? RegionEnum.UK.getCname() : country;
+		} catch (Exception e) {
+			log.error(" IP : {} >> Country/Region Parser Error：{}", ip, e.getMessage());
+			return RegionEnum.UK.getCname();
 		} finally {
 			rwl.readLock().unlock();
 		}

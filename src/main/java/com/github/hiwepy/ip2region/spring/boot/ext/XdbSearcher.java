@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
 
-    public static final String NOT_MATCH = "未分配或者内网IP|0|0|0|0";
+    public static final String NOT_MATCH = "0|0|0|内网IP|内网IP";
     public static final RegionAddress NOT_MATCH_REGION_ADDRESS = new RegionAddress(NOT_MATCH.split("\\|"));
     public static final String DEFAULT_LOCATION = "classpath:ip2region/ip2region.xdb";
     protected ResourceLoader resourceLoader;
@@ -90,7 +90,7 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
         long sTime = System.nanoTime();
         String region = searcher.search(ip);
         long cost = TimeUnit.NANOSECONDS.toMicros((long) (System.nanoTime() - sTime));
-        log.info(" IP : {} >> { region: {}, ioCount: {}, took: {} μs }\n", Searcher.long2ip(ip), region, searcher.getIOCount(), cost);
+        log.info(" IP : {} >> region: {}, ioCount: {}, took: {} μs \n", Searcher.long2ip(ip), region, searcher.getIOCount(), cost);
         // not matched
         if (!StringUtils.hasText(region)) {
             return NOT_MATCH;

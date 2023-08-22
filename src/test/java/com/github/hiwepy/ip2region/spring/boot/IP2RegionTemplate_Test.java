@@ -20,7 +20,11 @@ public class IP2RegionTemplate_Test {
 	@Test
 	public void templateTest() throws Exception {
 
-		System.out.println(template.getCountryByIp("127.0.0.1"));
+		System.out.println(template.memorySearch("127.0.0.1"));
+		System.out.println(template.memorySearch("114.124.146.103"));
+		System.out.println(template.memorySearch("115.193.169.84"));
+
+		System.out.println(template.getRegion("127.0.0.1"));
 		System.out.println(template.getRegion("114.124.146.103"));
 
 		RegionAddress adress1 = template.getRegionAddress("113.210.53.80");
@@ -31,11 +35,16 @@ public class IP2RegionTemplate_Test {
 		System.out.println(adress2);
 		System.out.println(RegionEnum.getByRegionAddress(adress2));
 
-		RegionEnum regionEnum = template.getRegionByIp("102.42.140.162");
-		System.out.println(regionEnum);
+		RegionEnum regionEnum1 = template.getRegionByIp("127.0.0.1");
+		System.out.println(regionEnum1);
+		RegionEnum regionEnum2 = template.getRegionByIp("102.42.140.162");
+		System.out.println(regionEnum2);
 
-		System.out.println(template.memorySearch("114.124.146.103"));
-		System.out.println(template.memorySearch("115.193.169.84"));
+		System.out.println(template.getCountryByIp("127.0.0.1"));
+		System.out.println(template.getCountryByIp("114.124.146.103"));
+
+		System.out.println(template.isMainlandIp("127.0.0.1"));
+		System.out.println(template.isMainlandIp("114.124.146.103"));
 
 	}
 
