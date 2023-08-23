@@ -18,8 +18,10 @@ public class IP2regionAutoConfiguration {
 
 	@Bean
 	public XdbSearcher xdbSearcher(IP2regionProperties properties) throws IOException {
-		XdbSearcher xdbSearcher = new XdbSearcher(properties.getLocation());
-		return xdbSearcher;
+		if (properties.isExternal()) {
+			return new XdbSearcher(properties.getLocation());
+		}
+		return new XdbSearcher();
 	}
 
 	@Bean
