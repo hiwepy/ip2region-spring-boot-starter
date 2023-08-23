@@ -1,5 +1,6 @@
 package com.github.hiwepy.ip2region.spring.boot;
 
+import com.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -16,6 +17,6 @@ public class IP2regionProperties {
 	/**
 	 * ip2region.xdb 文件路径，默认： classpath:ip2region/ip2region.xdb
 	 */
-	private String location = "classpath:ip2region/ip2region.xdb";
+	private String location = XdbSearcher.DEFAULT_LOCATION;
 
 }
