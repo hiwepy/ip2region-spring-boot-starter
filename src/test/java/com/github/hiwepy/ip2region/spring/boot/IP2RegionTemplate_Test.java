@@ -5,6 +5,8 @@ import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
 import com.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.core.io.FileSystemResourceLoader;
+import org.springframework.core.io.ResourceLoader;
 
 public class IP2RegionTemplate_Test {
 
@@ -13,7 +15,8 @@ public class IP2RegionTemplate_Test {
 	@Before
 	public void setUp()  throws Exception {
 		String dbPath = "D:\\data\\ip2region.xdb";
-		XdbSearcher xdbSearcher = new XdbSearcher(dbPath);
+		ResourceLoader resourceLoader = new FileSystemResourceLoader();
+		XdbSearcher xdbSearcher = new XdbSearcher(resourceLoader, dbPath);
 		template = new IP2regionTemplate(xdbSearcher);
 	}
 
@@ -27,7 +30,7 @@ public class IP2RegionTemplate_Test {
 		System.out.println(template.getRegion("127.0.0.1"));
 		System.out.println(template.getRegion("114.124.146.103"));
 
-		RegionAddress adress1 = template.getRegionAddress("113.210.53.80");
+		RegionAddress adress1 = template.getRegionAddress("125.119.96.60");
 		System.out.println(adress1);
 		System.out.println(RegionEnum.getByRegionAddress(adress1));
 

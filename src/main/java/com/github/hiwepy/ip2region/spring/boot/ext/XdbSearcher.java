@@ -30,11 +30,13 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
     protected byte[] xdbBuff;
     protected Searcher searcher = null;
 
-    public XdbSearcher() throws IOException {
+    public XdbSearcher(ResourceLoader resourceLoader) throws IOException {
+        this.resourceLoader = resourceLoader;
         this.searcher = this.loadWithBuffer(DEFAULT_LOCATION);
     }
 
-    public XdbSearcher(String location) throws IOException {
+    public XdbSearcher(ResourceLoader resourceLoader, String location) throws IOException {
+        this.resourceLoader = resourceLoader;
         this.searcher = this.loadWithBuffer(location);
     }
 
