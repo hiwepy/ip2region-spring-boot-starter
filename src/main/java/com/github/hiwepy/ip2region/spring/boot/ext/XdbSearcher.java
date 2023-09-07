@@ -45,7 +45,7 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
      * 1、创建 searcher 对象
      * 2、加载数据
      * 3、关闭 searcher 对象
-     * @param dbPath
+     * @param location
      * @throws IOException
      */
     public synchronized Searcher loadWithBuffer(String location) throws IOException {
