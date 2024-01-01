@@ -27,9 +27,7 @@ Spring Boot Starter For ip2region
 ```yaml
 ip2region:
   external: false
-  index-block-size: 4096
-  total-header-size: 8192
-  location: classpath*:ip2region/ip2region.db
+  location: classpath*:ip2region/ip2region.xdb
 ```
 
 
@@ -56,15 +54,13 @@ public class Application {
     @PostConstruct
     public void test() throws IOException {
 
-        System.out.println( template.btreeSearch("61.94.43.82"));
-        System.out.println( template.binarySearch("61.94.43.82"));
-        System.out.println( template.memorySearch("61.94.43.82"));
-        System.out.println(template.binarySearch("127.0.0.1"));
 
-        // 根据IP获取对应国家
-        System.out.println(template.getCountryByIp("127.0.0.1"));
+        // 根据IP进行搜索(默认使用内存算法)
+        System.out.println(template.memorySearch("127.0.0.1"));
+        System.out.println(template.memorySearch("61.94.43.82"));
 
         // 根据IP获取对应地区
+        System.out.println(template.getRegion("127.0.0.1"));
         System.out.println(template.getRegion("114.124.146.103"));
 
         // 根据IP获取对应地区详细信息对象
@@ -72,9 +68,19 @@ public class Application {
         System.out.println(adress1);
         System.out.println(RegionEnum.getByRegionAddress(adress1));
 
+        RegionAddress adress2 = template.getRegionAddress("127.0.0.1");
+        System.out.println(adress2);
+        System.out.println(RegionEnum.getByRegionAddress(adress2));
+
+        // 根据IP获取对应国家
+        RegionEnum regionEnum1 = template.getRegionByIp("127.0.0.1");
+        System.out.println(regionEnum1);
+        RegionEnum regionEnum2 = template.getRegionByIp("102.42.140.162");
+        System.out.println(regionEnum2);
+
         // 根据IP获取对应地区枚举
-        RegionEnum regionEnum = template.getRegionByIp("102.42.140.162");
-        System.out.println(regionEnum);
+        System.out.println(template.getCountryByIp("127.0.0.1"));
+        System.out.println(template.getCountryByIp("114.124.146.103"));
 
     }
 
@@ -83,7 +89,6 @@ public class Application {
     }
 
 }
-
 ```
 
 

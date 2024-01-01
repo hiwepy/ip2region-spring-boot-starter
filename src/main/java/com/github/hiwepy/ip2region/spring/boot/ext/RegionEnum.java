@@ -276,8 +276,8 @@ public enum RegionEnum {
 	ZM("894", "ZM", "ZMB", "ISO 3166-2:ZM", "Zambia", "赞比亚"),
 	ZW("716", "ZW", "ZWE", "ISO 3166-2:ZW", "Zimbabwe", "津巴布韦"),
 
-	UK("998", "UK", "UNKNOWN", "", "Unknown", "未知国家地区"),
-	TS("999", "TS", "TEST", "", "Test", "测试区域"),
+	UK("998", "UK", "UNKNOWN", "", "Unknown", "未知国家/地区"),
+	TS("999", "TS", "TEST", "", "Test", "测试"),
 
 	;
 
