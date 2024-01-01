@@ -3,14 +3,14 @@ package com.github.hiwepy.ip2region.spring.boot;
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
 import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
 import com.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.event.annotation.BeforeTestMethod;
 
 public class IP2RegionTemplate_Test {
 
 	IP2regionTemplate template = null;
 
-	@Before
+	@BeforeTestMethod
 	public void setUp()  throws Exception {
 		String dbPath = "D:\\data\\ip2region.xdb";
 		XdbSearcher xdbSearcher = new XdbSearcher(dbPath);
