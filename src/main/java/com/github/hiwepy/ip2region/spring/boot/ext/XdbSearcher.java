@@ -4,7 +4,6 @@ import com.github.hiwepy.ip2region.spring.boot.util.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.lionsoul.ip2region.xdb.Searcher;
 import org.springframework.beans.factory.DisposableBean;
-import org.springframework.context.ResourceLoaderAware;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.FileCopyUtils;
@@ -20,21 +19,22 @@ import java.util.concurrent.TimeUnit;
  * https://github.com/lionsoul2014/ip2region/tree/master/binding/java
  */
 @Slf4j
-public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
+public class XdbSearcher implements DisposableBean {
 
     public static final String NOT_MATCH = "0|0|0|内网IP|内网IP";
     public static final RegionAddress NOT_MATCH_REGION_ADDRESS = new RegionAddress(NOT_MATCH.split("\\|"));
     public static final String DEFAULT_LOCATION = "classpath:ip2region/ip2region.xdb";
-    protected ResourceLoader resourceLoader;
+
     protected byte[] vIndex;
     protected byte[] xdbBuff;
     protected Searcher searcher = null;
-
-    public XdbSearcher() throws IOException {
-        this.searcher = this.loadWithBuffer(DEFAULT_LOCATION);
+    protected final ResourceLoader resourceLoader;
+    public XdbSearcher(ResourceLoader resourceLoader) throws IOException {
+        this(resourceLoader, DEFAULT_LOCATION);
     }
 
-    public XdbSearcher(String location) throws IOException {
+    public XdbSearcher(ResourceLoader resourceLoader, String location) throws IOException {
+        this.resourceLoader = resourceLoader;
         this.searcher = this.loadWithBuffer(location);
     }
 
@@ -107,11 +107,6 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
      */
     public String memorySearch(String ip) throws IOException {
         return memorySearch(Util.ip2long(ip));
-    }
-
-    @Override
-    public void setResourceLoader(ResourceLoader resourceLoader) {
-        this.resourceLoader = resourceLoader;
     }
 
     @Override
