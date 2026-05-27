@@ -1,10 +1,10 @@
-package io.github.easy4j.ip2region.spring.boot;
+package io.github.hiwepy.ip2region.spring.boot;
 
-import io.github.easy4j.ip2region.spring.boot.ext.RegionAddress;
-import io.github.easy4j.ip2region.spring.boot.ext.RegionEnum;
-import io.github.easy4j.ip2region.spring.boot.ext.XdbSearcher;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
+import io.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
+import io.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.ResourceLoader;
 

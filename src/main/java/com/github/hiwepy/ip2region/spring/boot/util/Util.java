@@ -1,4 +1,4 @@
-package io.github.easy4j.ip2region.spring.boot.util;
+package io.github.hiwepy.ip2region.spring.boot.util;
 
 
 /**

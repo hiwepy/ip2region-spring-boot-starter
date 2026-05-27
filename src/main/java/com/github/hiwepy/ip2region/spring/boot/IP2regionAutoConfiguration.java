@@ -1,6 +1,6 @@
-package io.github.easy4j.ip2region.spring.boot;
+package io.github.hiwepy.ip2region.spring.boot;
 
-import io.github.easy4j.ip2region.spring.boot.ext.XdbSearcher;
+import io.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ResourceLoaderAware;

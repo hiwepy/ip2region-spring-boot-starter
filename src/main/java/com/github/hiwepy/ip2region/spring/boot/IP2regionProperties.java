@@ -1,6 +1,6 @@
-package io.github.easy4j.ip2region.spring.boot;
+package io.github.hiwepy.ip2region.spring.boot;
 
-import io.github.easy4j.ip2region.spring.boot.ext.XdbSearcher;
+import io.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
