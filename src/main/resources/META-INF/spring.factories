@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.hiwepy.ip2region.spring.boot.IP2regionAutoConfiguration
+io.github.easy4j.ip2region.spring.boot.IP2regionAutoConfiguration
