@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package io.github.hiwepy.ip2region.spring.boot.ext;
+package io.github.easy4j.ip2region.spring.boot.ext;
 
 
 import org.slf4j.Logger;
