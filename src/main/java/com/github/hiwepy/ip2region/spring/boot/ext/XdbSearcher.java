@@ -1,6 +1,6 @@
-package io.github.hiwepy.ip2region.spring.boot.ext;
+package io.github.easy4j.ip2region.spring.boot.ext;
 
-import io.github.hiwepy.ip2region.spring.boot.util.Util;
+import io.github.easy4j.ip2region.spring.boot.util.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.lionsoul.ip2region.xdb.Searcher;
 import org.springframework.beans.factory.DisposableBean;
