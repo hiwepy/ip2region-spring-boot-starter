@@ -13,10 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package io.github.hiwepy.ip2region.spring.boot;
+package io.github.easy4j.ip2region.spring.boot;
 
-import io.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
-import io.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
+import io.github.easy4j.ip2region.spring.boot.ext.RegionAddress;
+import io.github.easy4j.ip2region.spring.boot.ext.RegionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
