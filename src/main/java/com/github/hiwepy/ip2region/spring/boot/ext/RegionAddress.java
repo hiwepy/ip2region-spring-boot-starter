@@ -1,4 +1,4 @@
-package io.github.hiwepy.ip2region.spring.boot.ext;
+package io.github.easy4j.ip2region.spring.boot.ext;
 
 /**
  * Basic RegionAddress Info
