@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package io.github.hiwepy.ip2region.spring.boot;
+package io.github.easy4j.ip2region.spring.boot;
 
-import io.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
-import io.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
-import io.github.hiwepy.ip2region.spring.boot.ext.XdbSearcher;
+import io.github.easy4j.ip2region.spring.boot.ext.RegionAddress;
+import io.github.easy4j.ip2region.spring.boot.ext.RegionEnum;
+import io.github.easy4j.ip2region.spring.boot.ext.XdbSearcher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 
