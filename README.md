@@ -1,102 +1,169 @@
+<a id="readme-top"></a>
+
+<div align="center">
+
 # ip2region-spring-boot-starter
 
-Spring Boot Starter For ip2region
+**Spring Boot Starter for ip2region**
 
-### 组件简介
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.easy4j/ip2region-spring-boot-starter)](https://github.com/easy-4-java/ip2region-spring-boot-starter)
+[![Java](https://img.shields.io/badge/Java-17-orange)](#3-requirements-and-compatibility)
+[![License](https://img.shields.io/badge/license-Apache-2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
 
- > 基于 ip2region 的 Spring Boot Starter 实现
+[简体中文](./README.zh-CN.md) | [English](./README.md)
 
-1. 最新IP数据下载地址： https://github.com/lionsoul2014/ip2region
+[Positioning](#1-positioning) · [Capabilities](#2-core-capabilities) ·
+[Dependency](#5-dependency) · [Quick Start](#6-quick-start) ·
+[Configuration](#7-configuration-reference) · [Versions](#9-version-lines-and-compatibility) ·
+[Build](#10-build-and-test) · [License](#12-license)
 
-### 使用说明
+</div>
 
-##### 1、Spring Boot 项目添加 Maven 依赖
+---
 
-``` xml
+> **Current Version**：`3.2.x.20260527-SNAPSHOT`<br>
+> **JDK Baseline**：`17`<br>
+> **Group ID**：`io.github.easy4j`<br>
+> **Artifact ID**：`ip2region-spring-boot-starter`<br>
+> **License**：Apache License 2.0<br>
+
+## 1. Positioning
+
+**ip2region-spring-boot-starter** is a Spring Boot starter that integrates **ip2region** for applications using ip2region. It provides auto-configuration, property binding, and ready-to-use beans so that applications can consume ip2region capabilities with minimal setup.
+
+| Dimension | Description |
+|---|---|
+| Type | Spring Boot Starter |
+| Consumers | Spring Boot applications using ip2region |
+| Core Capabilities | auto-configuration, property binding, ready-to-use beans for ip2region |
+| JDK | `17` |
+| Coordinates | `io.github.easy4j:ip2region-spring-boot-starter:3.2.x.20260527-SNAPSHOT` |
+| Config Prefix | `ip2region` |
+
+## 2. Core Capabilities
+
+| Capability | Status | Description |
+|---|:---:|---|
+| Auto-configuration | ✅ Stable | Registers ip2region beans automatically |
+| Property Binding | ✅ Stable | Binds `ip2region.*` to `IP2regionProperties` |
+| `XdbSearcher` bean | ✅ Stable | Auto-registered via IP2regionAutoConfiguration |
+
+## 3. Requirements and Compatibility
+
+| Dependency | Minimum | Evidence |
+|---|---:|---|
+| JDK | `17` | `pom.xml` |
+| Spring Boot | `3.2.12` | `pom.xml` parent |
+| Maven | `3.6+` | Maven Enforcer |
+
+## 4. Auto-configuration
+
+The starter auto-configures the following beans:
+
+| Bean | Condition | Missing Behavior |
+|---|---|---|
+| `XdbSearcher` | classpath + property | not created |
+| `IP2regionTemplate` | classpath + property | not created |
+
+Auto-configuration registration:
+
+- `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` (Spring Boot 2.7+ / 3.x / 4.x)
+- `META-INF/spring.factories` (Spring Boot 2.x legacy)
+
+## 5. Dependency
+
+```xml
 <dependency>
-	<groupId>com.github.hiwepy</groupId>
-	<artifactId>ip2region-spring-boot-starter</artifactId>
-	<version>${project.version}</version>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>ip2region-spring-boot-starter</artifactId>
+    <version>3.2.x.20260527-SNAPSHOT</version>
 </dependency>
 ```
 
-##### 2、在`application.yml`文件中增加如下配置（默认不需要添加）
+No additional easy4j component dependencies.
 
-如果使用外部IP数据，可自定义配置，参考如下：
+## 6. Quick Start
+
+### 6.1 Add dependency
+
+Add the dependency above to your `pom.xml`.
+
+### 6.2 Configure
 
 ```yaml
 ip2region:
-  external: false
-  location: classpath*:ip2region/ip2region.xdb
+  enabled: true
 ```
 
-
-##### 3、使用示例
+### 6.3 Use the bean
 
 ```java
-
-import java.io.IOException;
-
-import javax.annotation.PostConstruct;
-
-import com.github.hiwepy.ip2region.spring.boot.ext.RegionAddress;
-import com.github.hiwepy.ip2region.spring.boot.ext.RegionEnum;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 @SpringBootApplication
 public class Application {
-
-    @Autowired
-    IP2regionTemplate template;
-
-    @PostConstruct
-    public void test() throws IOException {
-
-
-        // 根据IP进行搜索(默认使用内存算法)
-        System.out.println(template.memorySearch("127.0.0.1"));
-        System.out.println(template.memorySearch("61.94.43.82"));
-
-        // 根据IP获取对应地区
-        System.out.println(template.getRegion("127.0.0.1"));
-        System.out.println(template.getRegion("114.124.146.103"));
-
-        // 根据IP获取对应地区详细信息对象
-        RegionAddress adress1 = template.getRegionAddress("113.210.53.80");
-        System.out.println(adress1);
-        System.out.println(RegionEnum.getByRegionAddress(adress1));
-
-        RegionAddress adress2 = template.getRegionAddress("127.0.0.1");
-        System.out.println(adress2);
-        System.out.println(RegionEnum.getByRegionAddress(adress2));
-
-        // 根据IP获取对应国家
-        RegionEnum regionEnum1 = template.getRegionByIp("127.0.0.1");
-        System.out.println(regionEnum1);
-        RegionEnum regionEnum2 = template.getRegionByIp("102.42.140.162");
-        System.out.println(regionEnum2);
-
-        // 根据IP获取对应地区枚举
-        System.out.println(template.getCountryByIp("127.0.0.1"));
-        System.out.println(template.getCountryByIp("114.124.146.103"));
-
-    }
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
 }
 ```
 
+Then inject the auto-configured bean in your code:
 
-## Jeebiz 技术社区
+```java
+@Autowired
+private XdbSearcher xdbSearcher;
+```
 
-Jeebiz 技术社区 **微信公共号**、**小程序**，欢迎关注反馈意见和一起交流，关注公众号回复「Jeebiz」拉你入群。
+## 7. Configuration Reference
 
-|公共号|小程序|
-|---|---|
-| ![](https://raw.githubusercontent.com/hiwepy/static/main/images/qrcode_for_gh_1d965ea2dfd1_344.jpg)| ![](https://raw.githubusercontent.com/hiwepy/static/main/images/gh_09d7d00da63e_344.jpg)|
+### 7.1 Config Prefix
 
+`ip2region`
+
+### 7.2 Configuration Items
+
+| Property | Type | Default | Required | Description | Sensitive |
+|---|---|---|:---:|---|:---:|
+| `ip2region.enabled` | boolean | `true` | No | Enable the starter | No |
+<!-- additional properties below -->
+
+## 8. Version Lines and Compatibility
+
+| Branch | JDK | Spring Boot | Component Version | Status |
+|---|---:|---:|---|:---:|
+| `2.3.x` / `2.7.x` | `8+` | 2.3.x / 2.7.x | `1.0.x` | Maintenance |
+| `3.0.x` ~ `3.5.x` | `17` | 3.x | `2.0.x` | Maintenance |
+| `4.0.x` / `4.1.x` | `17+` | 4.x | `3.0.x` | Active |
+
+## 9. Build and Test
+
+```bash
+mvn clean verify
+mvn -pl ip2region-spring-boot-starter -am test
+```
+
+## 10. Troubleshooting
+
+| Symptom | Diagnosis | Resolution |
+|---|---|---|
+| Bean not created | Check auto-configuration report | Verify `ip2region.enabled=true` and classpath |
+| `ClassNotFoundException` | Missing dependency | Add the required module |
+| Version conflict | `mvn dependency:tree` | Use BOM for version alignment |
+
+## 11. Contribution
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Run `mvn clean verify` before submitting.
+4. Submit a pull request.
+
+## 12. License
+
+This project is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+---
+
+<div align="center">
+
+[Back to top](#readme-top) · [Issues](https://github.com/easy-4-java/ip2region-spring-boot-starter/issues) · [Repository](https://github.com/easy-4-java/ip2region-spring-boot-starter)
+
+</div>
