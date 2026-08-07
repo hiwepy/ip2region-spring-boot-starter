@@ -12,7 +12,7 @@
     <groupId>io.github.easy4j</groupId>
     <artifactId>ip2region-spring-boot-starter</artifactId>
     <description>Spring Boot Starter For ip2region</description>
-    <version>4.0.x.20251227-SNAPSHOT</version>
+    <version>4.0.x.20260630-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <url>https://github.com/easy-4-java/${project.artifactId}</url>
     <packaging>jar</packaging>
@@ -405,7 +405,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         
         <maven.version>3.9.9</maven.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
