@@ -5,50 +5,84 @@ import io.github.easy4j.ip2region.spring.boot.ext.RegionEnum;
 import io.github.easy4j.ip2region.spring.boot.ext.XdbSearcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.core.io.FileSystemResourceLoader;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+/**
+ * Tests for {@link IP2regionTemplate}.
+ *
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class IP2RegionTemplate_Test {
 
-	IP2regionTemplate template = null;
+    IP2regionTemplate template;
 
-	@BeforeEach
-	public void setUp()  throws Exception {
-		String dbPath = "D:\\ip2region.xdb";
-		ResourceLoader resourceLoader = new FileSystemResourceLoader();
-		XdbSearcher xdbSearcher = new XdbSearcher(resourceLoader, dbPath);
-		template = new IP2regionTemplate(xdbSearcher);
-	}
+    @BeforeEach
+    public void setUp() throws Exception {
+        ResourceLoader resourceLoader = new ResourceLoader() {
+            @Override
+            public Resource getResource(String location) {
+                return new ClassPathResource("ip2region/ip2region.xdb");
+            }
+            @Override
+            public ClassLoader getClassLoader() {
+                return getClass().getClassLoader();
+            }
+        };
+        XdbSearcher xdbSearcher = new XdbSearcher(resourceLoader);
+        template = new IP2regionTemplate(xdbSearcher);
+    }
 
-	@Test
-	public void templateTest() throws Exception {
+    @Test
+    public void memorySearchByString() throws Exception {
+        String result = template.memorySearch("127.0.0.1");
+        assertThat(result).isNotNull();
+    }
 
-		System.out.println(template.memorySearch("127.0.0.1"));
-		System.out.println(template.memorySearch("114.124.146.103"));
-		System.out.println(template.memorySearch("115.193.169.84"));
+    @Test
+    public void memorySearchByLong() throws Exception {
+        String result = template.memorySearch(2130706433L); // 127.0.0.1
+        assertThat(result).isNotNull();
+    }
 
-		System.out.println(template.getRegion("127.0.0.1"));
-		System.out.println(template.getRegion("114.124.146.103"));
+    @Test
+    public void getRegionReturnsString() {
+        String region = template.getRegion("127.0.0.1");
+        assertThat(region).isNotNull();
+    }
 
-		RegionAddress adress1 = template.getRegionAddress("125.119.96.60");
-		System.out.println(adress1);
-		System.out.println(RegionEnum.getByRegionAddress(adress1));
+    @Test
+    public void getRegionAddressReturnsAddress() {
+        RegionAddress address = template.getRegionAddress("127.0.0.1");
+        assertThat(address).isNotNull();
+        assertThat(address.getCountry()).isNotNull();
+    }
 
-		RegionAddress adress2 = template.getRegionAddress("127.0.0.1");
-		System.out.println(adress2);
-		System.out.println(RegionEnum.getByRegionAddress(adress2));
+    @Test
+    public void getRegionByIpReturnsEnum() {
+        RegionEnum regionEnum = template.getRegionByIp("127.0.0.1");
+        assertThat(regionEnum).isNotNull();
+    }
 
-		RegionEnum regionEnum1 = template.getRegionByIp("127.0.0.1");
-		System.out.println(regionEnum1);
-		RegionEnum regionEnum2 = template.getRegionByIp("102.42.140.162");
-		System.out.println(regionEnum2);
+    @Test
+    public void getCountryByIpReturnsString() {
+        String country = template.getCountryByIp("127.0.0.1");
+        assertThat(country).isNotNull();
+    }
 
-		System.out.println(template.getCountryByIp("127.0.0.1"));
-		System.out.println(template.getCountryByIp("114.124.146.103"));
+    @Test
+    public void isMainlandIpReturnsBoolean() {
+        boolean result = template.isMainlandIp("127.0.0.1");
+        assertThat(result).isFalse();
+    }
 
-		System.out.println(template.isMainlandIp("127.0.0.1"));
-		System.out.println(template.isMainlandIp("114.124.146.103"));
-
-	}
-
+    @Test
+    public void destroyCleansUp() throws Exception {
+        template.destroy();
+        // should not throw
+    }
 }
