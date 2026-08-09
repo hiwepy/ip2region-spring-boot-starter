@@ -2,6 +2,7 @@ package io.github.easy4j.ip2region.spring.boot.util;
 
 import java.util.regex.Pattern;
 
+/**\n * Utility class for IP address operations.\n *\n * @author [@Loong Wan](https://github.com/loong10k)\n * @since 1.0.0\n */
 public class IpUtils {
 
     protected static Pattern IPV4 = Pattern.compile("^((25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)$");

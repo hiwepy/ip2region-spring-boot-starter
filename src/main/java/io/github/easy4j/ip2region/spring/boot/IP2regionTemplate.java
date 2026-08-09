@@ -26,6 +26,7 @@ import java.util.Objects;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Slf4j
+/**\n * Template for IP to region lookup using ip2region library.\n *\n * @author [@Loong Wan](https://github.com/loong10k)\n * @since 1.0.0\n */
 public class IP2regionTemplate implements DisposableBean {
 
 	protected ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
