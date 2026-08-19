@@ -12,6 +12,8 @@ import java.io.IOException;
 
 /**
  * ip 解析
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 @Configuration
 @ConditionalOnClass(org.lionsoul.ip2region.xdb.Searcher.class)
@@ -19,6 +21,12 @@ import java.io.IOException;
 public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 
 	protected ResourceLoader resourceLoader;
+	/**
+	 * <p>Xdb searcher.</p>
+	 * @param properties the properties
+	 * @return the xdb searcher
+	 * @throws IOException if an error occurs
+	 */
 
 	@Bean
 	public XdbSearcher xdbSearcher(IP2regionProperties properties) throws IOException {
@@ -27,11 +35,18 @@ public class IP2regionAutoConfiguration implements ResourceLoaderAware {
 		}
 		return new XdbSearcher(resourceLoader);
 	}
+	/**
+	 * <p>Ip2region template.</p>
+	 * @param xdbSearcher the xdb searcher
+	 * @return the i p2region template
+	 * @throws IOException if an error occurs
+	 */
 
 	@Bean
 	public IP2regionTemplate ip2regionTemplate(XdbSearcher xdbSearcher) throws IOException {
 		return new IP2regionTemplate(xdbSearcher);
 	}
+	/** Sets the resource loader. */
 
 	@Override
 	public void setResourceLoader(ResourceLoader resourceLoader) {

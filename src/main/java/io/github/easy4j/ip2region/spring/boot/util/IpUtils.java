@@ -7,14 +7,29 @@ public class IpUtils {
 
     protected static Pattern IPV4 = Pattern.compile("^((25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)$");
     protected static Pattern IPV6 = Pattern.compile("^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$");
+    /**
+     * <p>Is ipv4.</p>
+     * @param ip4 the ip4
+     * @return the static boolean
+     */
 
     public static boolean isIpv4(String ip4){
         return IPV4.matcher(ip4).matches();
     }
+    /**
+     * <p>Is ipv6.</p>
+     * @param ip6 the ip6
+     * @return the static boolean
+     */
 
     public static boolean isIpv6(String ip6){
         return IPV6.matcher(ip6).matches();
     }
+    /**
+     * <p>Main.</p>
+     * @param args the args
+     * @return the static void
+     */
 
     public static void main(String[] args) {
         System.out.println(IpUtils.isIpv6("1610329044 "));

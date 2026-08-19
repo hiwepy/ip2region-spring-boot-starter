@@ -23,6 +23,8 @@ import org.slf4j.LoggerFactory;
  * Region 国家地区枚举
  * http://doc.chacuo.net/iso-3166-1
  * https://en.wikipedia.org/wiki/ISO_3166-1
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 public enum RegionEnum {
 
@@ -315,34 +317,42 @@ public enum RegionEnum {
 		this.cname = cname;
 		this.currency = currency;
 	}
+	/** Gets the number. */
 
 	public String getNumber() {
 		return number;
 	}
+	/** Gets the code2. */
 
 	public String getCode2() {
 		return code2;
 	}
+	/** Gets the code3. */
 
 	public String getCode3() {
 		return code3;
 	}
+	/** Gets the iso code. */
 
 	public String getIsoCode() {
 		return iso_code;
 	}
+	/** Gets the iso name. */
 
 	public String getIsoName() {
 		return iso_name;
 	}
+	/** Gets the cname. */
 
 	public String getCname() {
 		return cname;
 	}
+	/** Gets the currency. */
 
 	public String getCurrency() {
 		return currency;
 	}
+	/** Gets the by number. */
 
 	public static RegionEnum getByNumber(String number) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -353,6 +363,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with number '" + number + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by code2. */
 
 	public static RegionEnum getByCode2(String code2) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -363,6 +374,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with code2 '" + code2 + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by code3. */
 
 	public static RegionEnum getByCode3(String code3) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -373,6 +385,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with code3 '" + code3 + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by iso code. */
 
 	public static RegionEnum getByIsoCode(String iso_code) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -383,6 +396,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with iso_code '" + iso_code + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by iso name. */
 
 	public static RegionEnum getByIsoName(String iso_name) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -393,6 +407,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with iso_name '" + iso_name + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by cn name. */
 
 	public static RegionEnum getByCnName(String cn_name) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -403,6 +418,7 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with cn_name '" + cn_name + "'.");
 		return RegionEnum.UK;
 	}
+	/** Gets the by region address. */
 
 	public static RegionEnum getByRegionAddress(RegionAddress adress) {
 		for (RegionEnum region : RegionEnum.values()) {
@@ -414,14 +430,29 @@ public enum RegionEnum {
 		log.debug("Cannot found RegionEnum with '" + adress.toString() + "'.");
 		return RegionEnum.UK;
 	}
+	/**
+	 * <p>Is valid region.</p>
+	 * @param region the region
+	 * @return the static boolean
+	 */
 
 	public static boolean isValidRegion(RegionEnum region) {
 		return !RegionEnum.UK.equals(region) && !RegionEnum.TS.equals(region);
 	}
+	/**
+	 * <p>Is china region.</p>
+	 * @param region the region
+	 * @return the static boolean
+	 */
 
 	public static boolean isChinaRegion(RegionEnum region) {
 		return RegionEnum.CN.equals(region) || RegionEnum.HK.equals(region) || RegionEnum.MO.equals(region) || RegionEnum.TW.equals(region);
 	}
+	/**
+	 * <p>Is china region.</p>
+	 * @param countryCode the country code
+	 * @return the static boolean
+	 */
 
 	public static boolean isChinaRegion(String countryCode) {
 		RegionEnum region = RegionEnum.getByCode2(countryCode);
@@ -430,6 +461,11 @@ public enum RegionEnum {
 		}
 		return isChinaRegion(region);
 	}
+	/**
+	 * <p>Is mainland.</p>
+	 * @param countryCode the country code
+	 * @return the static boolean
+	 */
 
 	public static boolean isMainland(String countryCode) {
 		RegionEnum region = RegionEnum.getByCode2(countryCode);
@@ -438,18 +474,35 @@ public enum RegionEnum {
 		}
 		return RegionEnum.CN.equals(region);
 	}
+	/**
+	 * <p>Is valid region.</p>
+	 * @return the boolean
+	 */
 
 	public boolean isValidRegion() {
 		return !RegionEnum.UK.equals(this) && !RegionEnum.TS.equals(this);
 	}
+	/**
+	 * <p>Is china region.</p>
+	 * @return the boolean
+	 */
 
 	public boolean isChinaRegion() {
 		return RegionEnum.CN.equals(this) || RegionEnum.HK.equals(this) || RegionEnum.MO.equals(this) || RegionEnum.TW.equals(this);
 	}
+	/**
+	 * <p>Is china mainland.</p>
+	 * @return the boolean
+	 */
 
 	public boolean isChinaMainland() {
 		return RegionEnum.CN.equals(this);
 	}
+	/**
+	 * <p>Equals.</p>
+	 * @param region the region
+	 * @return the boolean
+	 */
 
 	public boolean equals(RegionEnum region) {
 		return this.compareTo(region) == 0;

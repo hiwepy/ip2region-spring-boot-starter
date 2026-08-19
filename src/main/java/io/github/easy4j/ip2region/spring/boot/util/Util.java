@@ -4,6 +4,7 @@ package io.github.easy4j.ip2region.spring.boot.util;
 /**
  * util class
  * @author chenxin
+ * @since 1.0.0
  */
 public class Util
 {
@@ -69,6 +70,7 @@ public class Util
                         (b[offset  ] & 0x00FF0000)
         );
     }
+    /** Gets the int2. */
 
     public static int getInt2( byte[] b, int offset )
     {
@@ -77,6 +79,7 @@ public class Util
                         (b[offset  ] & 0x0000FF00)
         );
     }
+    /** Gets the int1. */
 
     public static int getInt1( byte[] b, int offset )
     {

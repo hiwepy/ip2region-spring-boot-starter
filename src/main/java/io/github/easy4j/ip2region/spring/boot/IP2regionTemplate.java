@@ -35,14 +35,27 @@ public class IP2regionTemplate implements DisposableBean {
 	public IP2regionTemplate(XdbSearcher xdbSearcher) throws IOException {
 		this.xdbSearcher = xdbSearcher;
 	}
+	/**
+	 * <p>Memory search.</p>
+	 * @param ip the ip
+	 * @return the string
+	 * @throws IOException if an error occurs
+	 */
 
 	public String memorySearch(long ip) throws IOException {
 		return xdbSearcher.memorySearch(ip);
 	}
+	/**
+	 * <p>Memory search.</p>
+	 * @param ip the ip
+	 * @return the string
+	 * @throws IOException if an error occurs
+	 */
 
 	public String memorySearch(String ip) throws IOException {
 		return xdbSearcher.memorySearch(ip);
 	}
+	/** Gets the region. */
 
 	public String getRegion(String ip) {
 		try {
@@ -56,6 +69,7 @@ public class IP2regionTemplate implements DisposableBean {
 			rwl.readLock().unlock();
 		}
 	}
+	/** Gets the region address. */
 
 	public RegionAddress getRegionAddress(String ip) {
 		try {
@@ -70,6 +84,7 @@ public class IP2regionTemplate implements DisposableBean {
 			rwl.readLock().unlock();
 		}
 	}
+	/** Gets the region by ip. */
 
 	public RegionEnum getRegionByIp(String ip) {
 		try {
@@ -89,6 +104,7 @@ public class IP2regionTemplate implements DisposableBean {
 			rwl.readLock().unlock();
 		}
 	}
+	/** Gets the country by ip. */
 
 	public String getCountryByIp(String ip) {
 		try {
@@ -104,6 +120,11 @@ public class IP2regionTemplate implements DisposableBean {
 			rwl.readLock().unlock();
 		}
 	}
+	/**
+	 * <p>Is mainland ip.</p>
+	 * @param ip the ip
+	 * @return the boolean
+	 */
 
 	public boolean isMainlandIp(String ip) {
 		RegionEnum regionEnum = this.getRegionByIp(ip);
@@ -112,6 +133,10 @@ public class IP2regionTemplate implements DisposableBean {
 				RegionEnum.MO.compareTo(regionEnum) != 0 &&
 				RegionEnum.TW.compareTo(regionEnum) != 0;
 	}
+	/**
+	 * <p>Destroy.</p>
+	 * @throws Exception if an error occurs
+	 */
 
 	@Override
 	public void destroy() throws Exception {

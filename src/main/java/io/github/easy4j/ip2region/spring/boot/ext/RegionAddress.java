@@ -3,6 +3,7 @@ package io.github.easy4j.ip2region.spring.boot.ext;
 /**
  * Basic RegionAddress Info
  * @author 凡梦星尘(elkan1788@gmail.com)
+ * @since 1.0.0
  */
 public class RegionAddress {
 
@@ -39,46 +40,60 @@ public class RegionAddress {
         this.area = area;
         this.ISP = ISP;
     }
+    /** Gets the country. */
 
     public String getCountry() {
         return country;
     }
+    /** Sets the country. */
 
     public void setCountry(String country) {
         this.country = country;
     }
+    /** Gets the province. */
 
     public String getProvince() {
         return province;
     }
+    /** Sets the province. */
 
     public void setProvince(String province) {
         this.province = province;
     }
+    /** Gets the city. */
 
     public String getCity() {
         return city;
     }
+    /** Sets the city. */
 
     public void setCity(String city) {
         this.city = city;
     }
+    /** Gets the area. */
 
     public String getArea() {
         return area;
     }
+    /** Sets the area. */
 
     public void setArea(String area) {
         this.area = area;
     }
+    /** Gets the i s p. */
 
     public String getISP() {
         return ISP;
     }
+    /** Sets the i s p. */
 
     public void setISP(String ISP) {
         this.ISP = ISP;
     }
+    /**
+     * <p>To string.</p>
+     * @return the string
+     */
 
     @Override
     public String toString() {

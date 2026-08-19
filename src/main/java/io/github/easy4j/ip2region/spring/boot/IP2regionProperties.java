@@ -6,6 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(IP2regionProperties.PREFIX)
 @Data
+/**
+ * <p>Configuration properties for I P2region.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class IP2regionProperties {
 
 	public static final String PREFIX = "ip2region";

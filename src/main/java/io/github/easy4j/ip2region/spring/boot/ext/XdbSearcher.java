@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * https://github.com/lionsoul2014/ip2region/tree/master/binding/java
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 @Slf4j
 public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
@@ -110,11 +112,16 @@ public class XdbSearcher implements ResourceLoaderAware, DisposableBean {
     public String memorySearch(String ip) throws IOException {
         return memorySearch(Util.ip2long(ip));
     }
+    /** Sets the resource loader. */
 
     @Override
     public void setResourceLoader(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
+    /**
+     * <p>Destroy.</p>
+     * @throws Exception if an error occurs
+     */
 
     @Override
     public void destroy() throws Exception {
